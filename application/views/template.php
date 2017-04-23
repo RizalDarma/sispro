@@ -36,7 +36,7 @@
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
-                <h2>John Doe</h2>
+                <h2><?php echo $this->session->userdata['nama']; ?></h2>
               </div>
               <div class="clearfix"></div>
             </div>
@@ -48,15 +48,33 @@
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
                 <h3>General</h3>
+                
+                <?php if($this->session->userdata['level']=='mahasiswa'){ ?>
+                
                 <ul class="nav side-menu">
                   <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="index.html">Dashboard</a></li>
+                      <li><a href="index.html">Data Mahasiswa</a></li>
                       <li><a href="index2.html">Dashboard2</a></li>
                       <li><a href="index3.html">Dashboard3</a></li>
                     </ul>
                   </li>
                 </ul>
+                
+                <?php }elseif($this->session->userdata['level']=='dosen') { ?>
+                
+                <ul class="nav side-menu">
+                  <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                        <li><?=anchor('dosen','Data Dosen');?></li>  
+                        <li><?=anchor('dosen/check_mahasiswa/','List Data Mahasiswa');?></li>  
+                      <li><a href="index2.html">Dashboard2</a></li>
+                      <li><a href="index3.html">Dashboard3</a></li>
+                    </ul>
+                  </li>
+                </ul>
+                
+                <?php }?>
               </div>
 
 
@@ -105,7 +123,7 @@
                       </a>
                     </li>
                     <li><a href="javascript:;">Help</a></li>
-                    <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                    <li><?php echo anchor('login/logout','<i class="fa fa-sign-out pull-right"></i> Log Out');?></li>
                   </ul>
                 </li>
 
