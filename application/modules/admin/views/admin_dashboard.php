@@ -23,7 +23,7 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Plain Page</h2>
+                    <h2>Home</h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -42,7 +42,32 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                      Add content to the page ...ini data dosen
+                      <table>
+                          <tr  align="center">
+                              <td>Visi</td>
+                          </tr>
+                          <tr  align="center">
+                              <td>"Menjadi Program Studi Teknik Infotmatika yang unggul dan sebagai pusat pengembangan 
+                                   sumber daya manusia dalam ilmu pengetahuan dan teknologi komputer yang berahlak mulia serta 
+                                   mampu berkompetisi di era globalisasi."
+                              </td>
+                          </tr>
+                      </table>
+                      <br></br>
+                      <table>
+                          <tr  align="center">
+                              <td colspan="2">Misi</td>
+                          </tr>
+                          <tr align="justify">
+                              <td> 1<br></br></td><td>&nbsp; Meningkatkan kualitas, integritas moral yang tinggi serta mampu bekerjasama, berinovasi, kreatif dan profesional dalam bidang teknik Infotmatika yang bercirikan kekhasan daerah.</td>
+                          </tr>
+                          <tr>
+                              <td> 2</td><td>&nbsp; Meningkatkan “citra” program studi yang berkualitas dan jaminan standart kualitas lulusan (output).</td>
+                          </tr>
+                          <tr>
+                              <td> 3<br></br></td><td>&nbsp; Meningkatkan hubungan kerjasama yang strategis dengan lembaga-lembaga lain baik lembaga pemerintah maupun non-pemerintah pada tingkat lokal, regional dan nasional.</td>
+                          </tr>
+                      </table>
                   </div>
                 </div>
               </div>

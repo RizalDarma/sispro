@@ -1,19 +1,19 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Mahasiswa extends CI_Controller {
+class Admin extends CI_Controller {
     
     public function __construct() {
         parent::__construct();
         $this->app_model->islogin();
-        if ($this->session->userdata['level']<>'mahasiswa'){
+        if ($this->session->userdata['level']<>'admin'){
             redirect('login');
         }
     }
     
     public function index(){
-        $data = array('title'=>'Mahasiswa');
-        $this->template->load('template','mahasiswa_dashboard',$data);
+        $data = Array();
+        $this->template->load('template','admin_dashboard',$data);
     }
     
     

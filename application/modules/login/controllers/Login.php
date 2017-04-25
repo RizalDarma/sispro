@@ -35,7 +35,7 @@ class Login extends CI_Controller {
                 }
                 
             }else{
-                echo"Salah";
+                $this->load->view('login_view');
             }
         }else{
             $this->load->view('login_view');
