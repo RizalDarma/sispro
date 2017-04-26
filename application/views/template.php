@@ -57,7 +57,6 @@
                       <li><?=anchor('Mahasiswa','Welcome');?></li>
                       <li><?=anchor('Mahasiswa/data_mahasiswa/','Data Mahasiswa');?></li>
                       <li><?=anchor('Mahasiswa/pengumuman/','Pengumuman');?></li>
-                      <li><?=anchor('Mahasiswa/profile/','Profile');?></li>
                       <li><?=anchor('Mahasiswa/about/','About');?></li>
                     </ul>
                   </li>
@@ -70,8 +69,7 @@
                     <ul class="nav child_menu">
                         <li><?=anchor('dosen','Welcome');?></li>
                         <li><?=anchor('dosen/data_dosen/','Data Dosen');?></li>  
-                        <li><?=anchor('dosen/check_mahasiswa/','List Data Mahasiswa');?></li>  
-                        <li><?=anchor('dosen/profile/','Profile');?></li>
+                        <li><?=anchor('dosen/check_mahasiswa/','List Data Mahasiswa');?></li>
                         <li><?=anchor('dosen/about/','About');?></li>
                     </ul>
                   </li>
@@ -86,10 +84,12 @@
                         <li><?=anchor('admin','welcome');?></li>  
                         <li><?=anchor('admin/pendaftaran/','Pendaftaran');?></li> 
                         <li><?=anchor('admin/list_dosen/','Daftar Data Dosen');?></li>
-                        <li><?=anchor('admin/profile/','Profile');?></li>
-                        <li><?=anchor('admin/about/','About');?></li>
+                        <li><?=anchor('admin/Dataset/','Dataset');?></li>
+                        <li><?=anchor('admin/Users/','Users');?></li>
                     </ul>
                   </li>
+                  <li><a><i class="fa fa-exclamation-circle"></i> About <span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu"><li><?=anchor('admin/about/','About');?></li></ul></li>
                 </ul>
                 
                 <?php }?>
@@ -133,7 +133,9 @@
                     <?php echo $this->session->userdata['nama']; ?>
                     <span class=" fa fa-angle-down"></span>
                   </a>
+                   <?php $level = $this->session->userdata['level']; ?>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
+                      <li><?php echo anchor($level.'/profile','<i class="fa fa-user pull-right"></i> Account');?></li>
                     <li><?php echo anchor('login/logout','<i class="fa fa-sign-out pull-right"></i> Log Out');?></li>
                   </ul>
                 </li>

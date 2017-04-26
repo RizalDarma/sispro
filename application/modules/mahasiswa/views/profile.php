@@ -1,8 +1,8 @@
-
+<?php $user = $this->session->userdata['nama'];  ?>
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Welcome <?php echo $this->session->userdata['nama']; ?></h3>
+                <h3><?=$title;?></h3>
               </div>
 
               <div class="title_right">
@@ -23,7 +23,7 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Home</h2>
+                    <h2>Ubah Password <?php echo $this->session->userdata['nama']; ?></h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -42,8 +42,18 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                     
-                  </div>
+                       <!-- content -->
+                       <?=form_open('Mahasiswa/profile');?>
+                        <div>
+                        <?=form_input(array('type'=>'text','class'=>'form-control','value'=>$user,'disabled'=>'disabled','name'=>'username'));?>
+                        </div>
+                        <div>
+                        <?=form_input(array('type'=>'password','class'=>'form-control','placeholder'=>'Password','required'=>'','name'=>'password'));?>
+                        </div>
+                        <div>
+                        <?=  form_input(array('type'=>'submit','class'=>'btn btn-default submit','value'=>'Simpan','name'=>'submit'));?>
+                        </div>
+                  </div>      
                 </div>
               </div>
             </div>

@@ -2,7 +2,7 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Welcome <?php echo $this->session->userdata['nama']; ?></h3>
+                <h3><?=$title;?></h3>
               </div>
 
               <div class="title_right">
@@ -23,7 +23,7 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Home</h2>
+                    <h2>Data Pendaftaran</h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -42,8 +42,10 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                     
-                  </div>
+                       <!-- content -->
+                       <?=form_open('Mahasiswa/data');?>
+                       
+                  </div>      
                 </div>
               </div>
             </div>
