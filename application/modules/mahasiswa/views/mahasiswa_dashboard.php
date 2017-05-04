@@ -42,7 +42,94 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                      Add content to the page ...
+                      <!-- thumbnail menu welcome -->
+                      <div class="col-md-55">
+                        <div class="thumbnail">
+                          <div class="image view view-first">
+                            <img style="width: 100%; display: block;" src="images/media.jpg" alt="image" />
+                            <div class="mask">
+                              <p>Welcome</p>
+                              <div class="tools tools-bottom">
+                                <?=anchor('mahasiswa','<i class="fa fa-home"></i>');?></a>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="caption">
+                            <p align='center'>Welcome</p>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- thumbnail menu Data Dosen -->
+                      <div class="col-md-55">
+                        <div class="thumbnail">
+                          <div class="image view view-first">
+                            <img style="width: 100%; display: block;" src="images/media.jpg" alt="image" />
+                            <div class="mask">
+                              <p>Data Dosen</p>
+                              <div class="tools tools-bottom">
+                                <?=anchor('Mahasiswa/data_mahasiswa/','<i class="fa fa-male"></i>');?></a>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="caption">
+                            <p align='center'>Data Mahasiswa</p>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- thumbnail menu Data Dosen -->
+                      <div class="col-md-55">
+                        <div class="thumbnail">
+                          <div class="image view view-first">
+                            <img style="width: 100%; display: block;" src="images/media.jpg" alt="image" />
+                            <div class="mask">
+                              <p>List Data Mahasiswa</p>
+                              <div class="tools tools-bottom">
+                                <?=anchor('Mahasiswa/pengumuman/','<i class="fa fa-list"></i>');?></a>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="caption">
+                            <p align='center'>Pengumuman</p>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- thumbnail menu Account -->
+                      <div class="col-md-55">
+                        <div class="thumbnail">
+                          <div class="image view view-first">
+                            <img style="width: 100%; display: block;" src="images/media.jpg" alt="image" />
+                            <div class="mask">
+                              <p>Account</p>
+                              <?php $level = $this->session->userdata['level']; ?>
+                              <div class="tools tools-bottom">
+                                <?=anchor($level.'/profile/','<i class="fa fa-user"></i>');?></a>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="caption">
+                            <p align='center'>Account</p>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- thumbnail menu About -->
+                      <div class="col-md-55">
+                        <div class="thumbnail">
+                          <div class="image view view-first">
+                            <img style="width: 100%; display: block;" src="images/media.jpg" alt="image" />
+                            <div class="mask">
+                              <p>About</p>
+                              <?php $level = $this->session->userdata['level']; ?>
+                              <div class="tools tools-bottom">
+                                <?=anchor($level.'/about/','<i class="fa fa-info-circle"></i>');?></a>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="caption">
+                            <p align='center'>About</p>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- End Thumbnail -->
                   </div>
                 </div>
               </div>

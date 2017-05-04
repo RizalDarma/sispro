@@ -48,7 +48,7 @@
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
                 <h3>General</h3>
-                
+                <?php $level = $this->session->userdata['level']; ?>
                 <?php if($this->session->userdata['level']=='mahasiswa'){ ?>
                 
                 <ul class="nav side-menu">
@@ -57,9 +57,10 @@
                       <li><?=anchor('Mahasiswa','Welcome');?></li>
                       <li><?=anchor('Mahasiswa/data_mahasiswa/','Data Mahasiswa');?></li>
                       <li><?=anchor('Mahasiswa/pengumuman/','Pengumuman');?></li>
-                      <li><?=anchor('Mahasiswa/about/','About');?></li>
                     </ul>
                   </li>
+                  <li><a><i class="fa fa-info-circle"></i> About <span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu"><li><?=anchor($level.'/about/','About');?></li></ul></li>
                 </ul>
                 
                 <?php }elseif($this->session->userdata['level']=='dosen') { ?>
@@ -70,9 +71,10 @@
                         <li><?=anchor('dosen','Welcome');?></li>
                         <li><?=anchor('dosen/data_dosen/','Data Dosen');?></li>  
                         <li><?=anchor('dosen/check_mahasiswa/','List Data Mahasiswa');?></li>
-                        <li><?=anchor('dosen/about/','About');?></li>
                     </ul>
                   </li>
+                  <li><a><i class="fa fa-info-circle"></i> About <span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu"><li><?=anchor($level.'/about/','About');?></li></ul></li>
                 </ul>
                 
                 <?php }
@@ -88,8 +90,8 @@
                         <li><?=anchor('admin/Users/','Users');?></li>
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-exclamation-circle"></i> About <span class="fa fa-chevron-down"></span></a>
-                  <ul class="nav child_menu"><li><?=anchor('admin/about/','About');?></li></ul></li>
+                  <li><a><i class="fa fa-info-circle"></i> About <span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu"><li><?=anchor($level.'/about/','About');?></li></ul></li>
                 </ul>
                 
                 <?php }?>
@@ -129,7 +131,7 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <span class=" fa fa-user"></span>
+                    <span class=" fa fa-cogs"></span>
                     <?php echo $this->session->userdata['nama']; ?>
                     <span class=" fa fa-angle-down"></span>
                   </a>
@@ -168,7 +170,7 @@
     <script src="<?= base_url(); ?>vendors/jquery/jquery.min.js"></script>
     <!-- Bootstrap -->
     <script src="<?= base_url(); ?>vendors/bootstrap/js/bootstrap.min.js"></script>
-
+    
     <!-- Custom Theme Scripts -->
     <script src="<?= base_url(); ?>vendors/gantalella/js/custom.min.js"></script>
   </body>

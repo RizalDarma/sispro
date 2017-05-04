@@ -42,10 +42,11 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
+                       <?php echo $message;?>
                        <!-- content -->
-                       <?=form_open('Mahasiswa/profile');?>
+                       <?=form_open('Dosen/profile');?>
                         <div>
-                        <?=form_input(array('type'=>'text','class'=>'form-control','value'=>$user,'disabled'=>'disabled','name'=>'username'));?>
+                        <?=form_input(array('type'=>'text','class'=>'form-control','value'=>$user,'readonly'=>'readonly','name'=>'username'));?>
                         </div>
                         <div>
                         <?=form_input(array('type'=>'password','class'=>'form-control','placeholder'=>'Password','required'=>'','name'=>'password'));?>

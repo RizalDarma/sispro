@@ -1,4 +1,4 @@
-<?php $user = $this->session->userdata['nama'];  ?>
+<?php $user = $this->session->userdata['username'];  ?>
           <div class="">
             <div class="page-title">
               <div class="title_left">
@@ -42,16 +42,17 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
+                      <?php echo $message;?>
                        <!-- content -->
                        <?=form_open('Mahasiswa/profile');?>
                         <div>
-                        <?=form_input(array('type'=>'text','class'=>'form-control','value'=>$user,'disabled'=>'disabled','name'=>'username'));?>
+                        <?=form_input(array('type'=>'text','class'=>'form-control','value'=>$user,'disabled'=>'disabled','name'=>$user));?>
                         </div>
                         <div>
                         <?=form_input(array('type'=>'password','class'=>'form-control','placeholder'=>'Password','required'=>'','name'=>'password'));?>
                         </div>
                         <div>
-                        <?=  form_input(array('type'=>'submit','class'=>'btn btn-default submit','value'=>'Simpan','name'=>'submit'));?>
+                        <?=form_input(array('type'=>'submit','class'=>'btn btn-default submit','value'=>'Simpan','name'=>'submit'));?>
                         </div>
                   </div>      
                 </div>

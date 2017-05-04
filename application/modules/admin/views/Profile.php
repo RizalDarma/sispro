@@ -42,8 +42,9 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
+                      <?php echo $message;?>
                        <!-- content -->
-                       <?=form_open('Mahasiswa/profile');?>
+                       <?=form_open('Admin/profile');?>
                         <div>
                         <?=form_input(array('type'=>'text','class'=>'form-control','value'=>$user,'disabled'=>'disabled','name'=>'username'));?>
                         </div>

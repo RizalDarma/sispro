@@ -25,21 +25,26 @@ class Mahasiswa extends CI_Controller {
     {
         if(isset($_POST['submit']))
         {
-            $username=  $this->input->post('username');
+            $id_users=  $this->session->userdata['id_users'];
             $password=  $this->input->post('password');
-            $data    =  array('username'=>$username,'password'=>  md5($password));
-            $this->app_model->update($username,$password);
-            redirect('Mahasiswa/profile');
+            //$data    =  array('username'=>$username,'password'=>md5($password));
+            $this->app_model->update($id_users,$password);
+            $data['title'] = "Profile";
+            $data['message']="<div class='alert alert-success'>Data Berhasil Dirubah</div>";
+            $this->template->load('template','profile',$data);
         }
         else
         {
             $username = $this->session->userdata['username'];
-            //$password = $this->session->userdata['password'];
-            //$data   =  array('username'=>$username,'password'=>  md5($password));
-            $data = array('title'=>'Profile',$username);
-            //$data = array('r'=>'$username');
+            $data['title'] = "Profile";
             $this->app_model->getByID($username);
+            $data['message']="";
             $this->template->load('template','profile',$data);
         }
+    }
+    
+    public function pengumuman(){
+        $data = array('title'=>'Pengumuman');
+        $this->template->load('template','pengumuman',$data);
     }
 }

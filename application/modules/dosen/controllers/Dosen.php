@@ -17,9 +17,15 @@ class Dosen extends CI_Controller {
     }
     
     public function check_mahasiswa(){
-        $dosen = $this->session->userdata['username'];
-        $data = array('title'=>'Ini List Mahasiswa '.$dosen);
-        $this->template->load('template','dosen_dashboard',$data);
+        $dosen = $this->session->userdata['nama'];
+        $data = array('title'=>'List Mahasiswa '.$dosen);
+        $this->template->load('template','list_mahasiswa',$data);
+    }
+    
+    public function data_dosen(){
+        $dosen = $this->session->userdata['nama'];
+        $data = array('title'=>'Data '.$dosen);
+        $this->template->load('template','data_dosen',$data);
     }
     
     function profile()
@@ -30,7 +36,9 @@ class Dosen extends CI_Controller {
             $password=  $this->input->post('password');
             $data    =  array('username'=>$username,'password'=>  md5($password));
             $this->app_model->update($username,$password);
-            redirect('Mahasiswa/profile');
+            $data['title'] = "Profile";
+            $data['message']="<div class='alert alert-success'>Data Berhasil Dirubah</div>";
+            $this->template->load('template','profile',$data);
         }
         else
         {
@@ -40,6 +48,7 @@ class Dosen extends CI_Controller {
             $data = array('title'=>'Profile',$username);
             //$data = array('r'=>'$username');
             $this->app_model->getByID($username);
+            $data['message']="";
             $this->template->load('template','profile',$data);
         }
     }
