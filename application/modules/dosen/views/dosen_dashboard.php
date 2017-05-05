@@ -2,7 +2,7 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3><?=$title;?></h3>
+                <h3>Welcome <?php echo $this->session->userdata['nama']; ?></h3>
               </div>
 
               <div class="title_right">
@@ -42,7 +42,94 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                      Add content to the page ...ini data dosen
+                      <!-- thumbnail menu welcome -->
+                      <div class="col-md-55">
+                        <div class="thumbnail">
+                          <div class="image view view-first">
+                            <img style="width: 100%; display: block;" src="images/media.jpg" alt="image" />
+                            <div class="mask">
+                              <p>Welcome</p>
+                              <div class="tools tools-bottom">
+                                <?=anchor('dosen','<i class="fa fa-home"></i>');?></a>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="caption">
+                            <p align='center'>Welcome</p>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- thumbnail menu Data Dosen -->
+                      <div class="col-md-55">
+                        <div class="thumbnail">
+                          <div class="image view view-first">
+                            <img style="width: 100%; display: block;" src="images/media.jpg" alt="image" />
+                            <div class="mask">
+                              <p>Data Dosen</p>
+                              <div class="tools tools-bottom">
+                                <?=anchor('dosen/data_dosen/','<i class="fa fa-male"></i>');?></a>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="caption">
+                            <p align='center'>Data Dosen</p>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- thumbnail menu Data Dosen -->
+                      <div class="col-md-55">
+                        <div class="thumbnail">
+                          <div class="image view view-first">
+                            <img style="width: 100%; display: block;" src="images/media.jpg" alt="image" />
+                            <div class="mask">
+                              <p>List Data Mahasiswa</p>
+                              <div class="tools tools-bottom">
+                                <?=anchor('dosen/check_mahasiswa/','<i class="fa fa-list"></i>');?></a>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="caption">
+                            <p align='center'>List Data Mahasiswa</p>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- thumbnail menu Account -->
+                      <div class="col-md-55">
+                        <div class="thumbnail">
+                          <div class="image view view-first">
+                            <img style="width: 100%; display: block;" src="images/media.jpg" alt="image" />
+                            <div class="mask">
+                              <p>Account</p>
+                              <?php $level = $this->session->userdata['level']; ?>
+                              <div class="tools tools-bottom">
+                                <?=anchor($level.'/profile/','<i class="fa fa-user"></i>');?></a>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="caption">
+                            <p align='center'>Account</p>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- thumbnail menu About -->
+                      <div class="col-md-55">
+                        <div class="thumbnail">
+                          <div class="image view view-first">
+                            <img style="width: 100%; display: block;" src="images/media.jpg" alt="image" />
+                            <div class="mask">
+                              <p>About</p>
+                              <?php $level = $this->session->userdata['level']; ?>
+                              <div class="tools tools-bottom">
+                                <?=anchor($level.'/about/','<i class="fa fa-info-circle"></i>');?></a>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="caption">
+                            <p align='center'>About</p>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- End Thumbnail -->
                   </div>
                 </div>
               </div>

@@ -22,7 +22,8 @@ class Login extends CI_Controller {
                 $data = array(
                     'username'=>$r['username'],
                     'nama'=>$r['nama'],
-                    'level'=>$r['level']
+                    'level'=>$r['level'],
+                    'id_users'=>$r['id_users']
                 );
                 
                 $this->session->set_userdata($data);
@@ -35,7 +36,7 @@ class Login extends CI_Controller {
                 }
                 
             }else{
-                echo"Salah";
+                $this->load->view('login_view');
             }
         }else{
             $this->load->view('login_view');

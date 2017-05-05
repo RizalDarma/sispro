@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Gentelella Alela! | </title>
+    <title>Sispro | Teknik Informatika</title>
 
     <!-- Bootstrap -->
     <link href="<?= base_url(); ?>vendors/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -24,7 +24,7 @@
         <div class="animate form login_form">
           <section class="login_content">
             <?=form_open('login/login');?>
-              <h1>Login Form</h1>
+              <h1> Login </h1>
               <div>
                 <?=form_input(array('type'=>'text','class'=>'form-control','placeholder'=>'Username','required'=>'','name'=>'username'));?>
               </div>
@@ -39,8 +39,8 @@
 
               <div class="separator">
                 <div>
-                  <h1><i class="fa fa-university"></i> Gentelella Alela!</h1>
-                  <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and Terms</p>
+                  <h1><i class="fa fa-university"></i> Teknik Informatika</h1>
+                  <p>©2017 All Rights Reserved Teknik Informatika</p>
                 </div>
               </div>
             </form>
