@@ -17,8 +17,35 @@ class Mahasiswa extends CI_Controller {
     }
     
     public function data_mahasiswa(){
-        $data = array('title'=>'Data Mahasiswa');
+        if(isset($_POST['submit']))
+        {
+            $id_users=  $this->session->userdata['id_users'];
+            $nama= $this->session->userdata['nama'];
+            $npm= $this->session->userdata['username'];
+            $email=  $this->input->post('email');
+            $nomor= $this->input->post('nomor');
+            $k1= $this->input->post('nama_kriteria1');
+            $k2= $this->input->post('nama_kriteria2');
+            $k3= $this->input->post('nama_kriteria3');
+            $k4= $this->input->post('nama_kriteria4');
+            $judul= $this->input->post('judul');
+            
+            echo "id = $id_users,nama = $nama,npm = $npm,email = $email,nohp = $nomor, kriteria 1 = $k1,kriteria 2 = $k2,kriteria 3 = $k3,kriteria 4 = $k4";
+        }
+        else{
+            $this->load->model('app_model');
+            $data = array('title'=>'Data Mahasiswa',
+            'dd' => $this->app_model->kriteria1(),
+            'nama_kriteria' => $this->input->post('nama_kriteria1') ? $this->input->post('nama_kriteria1') : '',
+            'dd1' => $this->app_model->kriteria2(),
+            'nama_kriteria2' => $this->input->post('nama_kriteria2') ? $this->input->post('nama_kriteria2') : '',
+            'dd2' => $this->app_model->kriteria3(),
+            'nama_kriteria3' => $this->input->post('nama_kriteria3') ? $this->input->post('nama_kriteria3') : '',
+            'dd3' => $this->app_model->kriteria4(),
+            'nama_kriteria4' => $this->input->post('nama_kriteria4') ? $this->input->post('nama_kriteria4') : '',);
         $this->template->load('template','data_mahasiswa_view',$data);
+        }
+        
     }
     
     function profile()
@@ -44,7 +71,8 @@ class Mahasiswa extends CI_Controller {
     }
     
     public function pengumuman(){
-        $data = array('title'=>'Pengumuman');
+        $data['title'] = "Pengumuman";
         $this->template->load('template','pengumuman',$data);
     }
+    
 }

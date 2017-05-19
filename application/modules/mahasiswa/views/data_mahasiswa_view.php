@@ -1,4 +1,6 @@
-
+<?php $id = $this->session->userdata['id_users'];?>
+<?php $nama = $this->session->userdata['nama'];?>
+<?php $usern = $this->session->userdata['username'];?>
           <div class="">
             <div class="page-title">
               <div class="title_left">
@@ -43,8 +45,74 @@
                   </div>
                   <div class="x_content">
                        <!-- content -->
-                       <?=form_open('Mahasiswa/data');?>
-                       
+                       <?=form_open('Mahasiswa/data_mahasiswa');?>
+                      <table border=0>
+                        <tr>
+                            <td>
+                            <label class="col-sm-3 control-label">ID Users</label>
+                            <div class="col-sm-9">
+                            <?=form_input(array('type'=>'text','class'=>'form-control','value'=>$id,'readonly'=>'readonly','name'=>'id_users'));?>
+                            </div>
+                  
+                            <label class="col-sm-3 control-label">Nama Users</label>
+                            <div class="col-sm-9">
+                            <?=form_input(array('type'=>'text','class'=>'form-control','value'=>$nama,'readonly'=>'readonly','name'=>'nama'));?>
+                            </div>
+                  
+                            <label class="col-sm-3 control-label">NPM</label>
+                            <div class="col-sm-9">
+                            <?=form_input(array('type'=>'text','class'=>'form-control','value'=>$usern,'readonly'=>'readonly','name'=>'npm'));?>
+                            </div>
+                            
+                            <label class="col-sm-3 control-label">Email</label>
+                            <div class="col-sm-9">
+                            <?=form_input(array('type'=>'email','class'=>'form-control','placeholder'=>'E-mail','value'=>'','name'=>'email'));?>
+                            </div>
+                            
+                            <label class="col-sm-3 control-label">No. Hp</label>
+                            <div class="col-sm-9">
+                            <?=form_input(array('type'=>'text','class'=>'form-control','placeholder'=>'Nomor Telp.','value'=>'','name'=>'nomor'));?>
+                            </div>
+                            
+                            <label class="col-sm-3 control-label">Kategori Judul</label>
+                            <div class="col-sm-9">
+                            <?php $dd_attribute = 'class="form-control select2"'; ?>
+                            <?=form_dropdown('nama_kriteria1', $dd , $nama_kriteria , $dd_attribute); ?>
+                            </div>
+                            
+                            <label class="col-sm-3 control-label">Kategori Pemrograman</label>
+                            <div class="col-sm-9">
+                            <?=form_dropdown('nama_kriteria2', $dd1 , $nama_kriteria2 , $dd_attribute); ?>
+                            </div>
+                            
+                            <label class="col-sm-3 control-label">Metode</label>
+                            <div class="col-sm-9">
+                            <?=form_dropdown('nama_kriteria3', $dd2 , $nama_kriteria3 , $dd_attribute); ?>
+                            </div>
+                            
+                            <label class="col-sm-3 control-label">Pengajuan Pendaftaran</label>
+                            <div class="col-sm-9">
+                            <?=form_dropdown('nama_kriteria4', $dd3 , $nama_kriteria4 , $dd_attribute); ?>
+                            </div>
+                            
+                            <label class="col-sm-3 control-label">Judul</label>
+                            <div class="col-sm-9">
+                            <?=form_textarea('judul',set_value(''),'class="form-control"');?>
+                            </div>
+                            
+                            <div>
+                            <?=  form_input(array('type'=>'submit','class'=>'btn btn-default submit','value'=>'Simpan','name'=>'submit'));?>
+                            </div>
+                            </td>
+                        </tr>
+                    </table>
+                       <script>
+            $(document).ready(function () {
+                $(".select2").select2({
+                    placeholder: "Please Select"
+                });
+            });
+        </script>
                   </div>      
                 </div>
               </div>

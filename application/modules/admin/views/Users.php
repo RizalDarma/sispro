@@ -1,8 +1,8 @@
-<?php $user = $this->session->userdata['username'];  ?>
+
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3><?=$title;?></h3>
+                <h3><?=$title?></h3>
               </div>
 
               <div class="title_right">
@@ -23,7 +23,7 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Ubah Password <?php echo $this->session->userdata['nama']; ?></h2>
+                    <h2></h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -43,19 +43,39 @@
                   </div>
                   <div class="x_content">
                       <?php echo $message;?>
-                       <!-- content -->
-                       <?=form_open('Mahasiswa/profile');?>
-                        <div>
-                        <?=form_input(array('type'=>'text','class'=>'form-control','value'=>$user,'readonly'=>'readonly','name'=>$user));?>
-                        </div>
-                        <div>
-                        <?=form_input(array('type'=>'password','class'=>'form-control','placeholder'=>'Password','required'=>'','name'=>'password'));?>
-                        </div>
-                        <div>
-                        <?=form_input(array('type'=>'submit','class'=>'btn btn-default submit','value'=>'Simpan','name'=>'submit'));?>
-                        </div>
-                  </div>      
+                      
+                      <!-- Tabel -->
+                      <div class="table-responsive">
+                        <Table class="table table-striped table-bordered">
+                            <thead align="center">
+                                <tr>
+                                <td>No.</td>
+                                <td>Nama</td>
+                                <td>Username</td>
+                                <td>Password</td>
+                                <td>Status</td>
+                                <td colspan="2" align="center">Action</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php $no=0; foreach($anggota as $row ): $no++;?>
+                                <tr>
+                                <td align="center"><?php echo $row->id_users;?></td>
+                                <td><?php echo $row->nama;?></td>
+                                <td><?php echo $row->username;?></td>
+                                <td><?php echo $row->password;?></td>
+                                <td><?php echo $row->level;?></td>
+                                <td align="center"><?=anchor('admin/dataku/'.$row->id_users,'<i class="glyphicon glyphicon-edit"></i>');?></td>
+                                <td align="center"><?=anchor('admin/hapus_data/'.$row->id_users,'<i class="glyphicon glyphicon-trash"></i>');?></td>
+                                </tr>
+                                <?php endforeach;?>
+                             </tbody>
+                        </Table>
+                      </div>
+                      <?php echo $pagination;?>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
+

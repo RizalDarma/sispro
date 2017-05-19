@@ -17,7 +17,7 @@ class Login extends CI_Controller {
             $password = $this->input->post('password');
             $hasil = $this->app_model->check_login($username,$password);
             if($hasil->num_rows()>0){
-                echo"berhasil login";
+                //echo"berhasil login";
                 $r = $hasil->row_array();
                 $data = array(
                     'username'=>$r['username'],

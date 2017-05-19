@@ -32,10 +32,10 @@ class Dosen extends CI_Controller {
     {
         if(isset($_POST['submit']))
         {
-            $username=  $this->input->post('username');
+            $id_users=  $this->session->userdata['id_users'];
             $password=  $this->input->post('password');
-            $data    =  array('username'=>$username,'password'=>  md5($password));
-            $this->app_model->update($username,$password);
+            //$data    =  array('username'=>$username,'password'=>  md5($password));
+            $this->app_model->update($id_users,$password);
             $data['title'] = "Profile";
             $data['message']="<div class='alert alert-success'>Data Berhasil Dirubah</div>";
             $this->template->load('template','profile',$data);

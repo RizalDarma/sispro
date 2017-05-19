@@ -49,34 +49,25 @@
                             <thead align="center">
                                 <tr>
                                 <td>No.</td>
-                                <td>NPM</td>
+                                <td>NIDN</td>
                                 <td>Nama</td>
-                                <td>Kelas</td>
                                 <td>No Hp</td>
-                                <td>K. Judul</td>
-                                <td>K. Program</td>
-                                <td>Metode</td>
-                                <td>Pendaftar</td>
-                                <td>Periode</td>
-                                <td colspan="3" align="center">Action</td>
+                                <td>Email</td>
+                                <td>Alamat</td>
+                                <td colspan="2" align="center">Action</td>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php $no=0; foreach($anggota as $row ): $no++;?>
                                 <tr>
                                 <td><?php echo $no;?></td>
-                                <td><?php echo $row->npm;?></td>
-                                <td><?php echo $row->nama;?></td>
-                                <td><?php echo $row->kelas;?></td>
-                                <td><?php echo $row->no_hp;?></td>
-                                <td><?php echo $row->k_judul;?></td>
-                                <td><?php echo $row->k_program;?></td>
-                                <td><?php echo $row->metode;?></td>
-                                <td><?php echo $row->pendaftar;?></td>
-                                <td><?php echo $row->periode;?></td>
-                                <td><?=anchor('admin/edit_data/'.$row->npm,'<i class="glyphicon glyphicon-edit"></i>');?></td>
-                                <td><?=anchor('admin/hapus_data/'.$row->npm,'<i class="glyphicon glyphicon-trash"></i>');?></td>
-                                <td><?=anchor('admin/','<i class="glyphicon glyphicon-eye-open"></i>');?></td>
+                                <td><?php echo $row->Id_Dosen;?></td>
+                                <td><?php echo $row->Nama_Dosen;?></td>
+                                <td><?php echo $row->Notlp_Dosen;?></td>
+                                <td><?php echo $row->Email_Dosen;?></td>
+                                <td><?php echo $row->Alamat_Dosen;?></td>
+                                <td><?=anchor('admin/edit_data/'.$row->Id_Dosen,'<i class="glyphicon glyphicon-edit"></i>');?></td>
+                                <td><?=anchor('admin/hapus_data/'.$row->Id_Dosen,'<i class="glyphicon glyphicon-trash"></i>');?></td>
                                 </tr>
                                 <?php endforeach;?>
                              </tbody>
