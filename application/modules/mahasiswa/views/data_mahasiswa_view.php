@@ -1,6 +1,7 @@
 <?php $id = $this->session->userdata['id_users'];?>
 <?php $nama = $this->session->userdata['nama'];?>
 <?php $usern = $this->session->userdata['username'];?>
+<?php $periode = $this->session->userdata['periode'];?>
           <div class="">
             <div class="page-title">
               <div class="title_left">
@@ -46,9 +47,11 @@
                   <div class="x_content">
                        <!-- content -->
                        <?=form_open('Mahasiswa/data_mahasiswa');?>
+                       
                       <table border=0>
                         <tr>
                             <td>
+                            
                             <label class="col-sm-3 control-label">ID Users</label>
                             <div class="col-sm-9">
                             <?=form_input(array('type'=>'text','class'=>'form-control','value'=>$id,'readonly'=>'readonly','name'=>'id_users'));?>
@@ -64,6 +67,11 @@
                             <?=form_input(array('type'=>'text','class'=>'form-control','value'=>$usern,'readonly'=>'readonly','name'=>'npm'));?>
                             </div>
                             
+                            <label class="col-sm-3 control-label">Periode Pendaftaran</label>
+                            <div class="col-sm-9">
+                            <?=form_input(array('type'=>'text','class'=>'form-control','value'=>$periode,'readonly'=>'readonly','name'=>'periode'));?>
+                            </div>
+                            
                             <label class="col-sm-3 control-label">Email</label>
                             <div class="col-sm-9">
                             <?=form_input(array('type'=>'email','class'=>'form-control','placeholder'=>'E-mail','value'=>'','name'=>'email'));?>
@@ -72,6 +80,11 @@
                             <label class="col-sm-3 control-label">No. Hp</label>
                             <div class="col-sm-9">
                             <?=form_input(array('type'=>'text','class'=>'form-control','placeholder'=>'Nomor Telp.','value'=>'','name'=>'nomor'));?>
+                            </div>
+                            
+                            <label class="col-sm-3 control-label">Kelas</label>
+                            <div class="col-sm-9">
+                            <?=form_input(array('type'=>'text','class'=>'form-control','placeholder'=>'Kelas','value'=>'','name'=>'kelas'));?>
                             </div>
                             
                             <label class="col-sm-3 control-label">Kategori Judul</label>
@@ -100,19 +113,14 @@
                             <?=form_textarea('judul',set_value(''),'class="form-control"');?>
                             </div>
                             
-                            <div>
+                            <label class="col-sm-3 control-label"></label>
+                            <div class="col-sm-9">
                             <?=  form_input(array('type'=>'submit','class'=>'btn btn-default submit','value'=>'Simpan','name'=>'submit'));?>
                             </div>
+                            
                             </td>
                         </tr>
                     </table>
-                       <script>
-            $(document).ready(function () {
-                $(".select2").select2({
-                    placeholder: "Please Select"
-                });
-            });
-        </script>
                   </div>      
                 </div>
               </div>

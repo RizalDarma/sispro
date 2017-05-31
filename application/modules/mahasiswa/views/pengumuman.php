@@ -42,6 +42,7 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
+                  <?php echo $message;?>
                       <!-- content -->
                   </div>
                 </div>

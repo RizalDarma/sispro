@@ -23,7 +23,8 @@ class Login extends CI_Controller {
                     'username'=>$r['username'],
                     'nama'=>$r['nama'],
                     'level'=>$r['level'],
-                    'id_users'=>$r['id_users']
+                    'id_users'=>$r['id_users'],
+                    'periode'=>$r['Periode']
                 );
                 
                 $this->session->set_userdata($data);

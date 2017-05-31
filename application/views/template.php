@@ -17,14 +17,14 @@
     <!-- Custom Theme Style -->
     <link href="<?= base_url(); ?>vendors/gantalella/css/custom.min.css" rel="stylesheet">
   </head>
-
+<?php $level = $this->session->userdata['level']; ?>
   <body class="nav-md">
     <div class="container body">
       <div class="main_container">
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="#" class="site_title"><i class="fa fa-university"></i> <span>T.Informatika</span></a>
+              <a href=<?= $level; ?> class="site_title"><i class="fa fa-university"></i> <span>T.Informatika</span></a>
             </div>
 
             <div class="clearfix"></div>
@@ -32,7 +32,7 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="<?= base_url(); ?>images/img.jpg" alt="..." class="img-circle profile_img">
+                <img src="<?= base_url(); ?>images/un pgri.png" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
@@ -60,7 +60,7 @@
                     </ul>
                   </li>
                   <li><a><i class="fa fa-info-circle"></i> About <span class="fa fa-chevron-down"></span></a>
-                  <ul class="nav child_menu"><li><?=anchor($level.'/about/','About');?></li></ul></li>
+                  <ul class="nav child_menu"><li><a href="#" id="fc_create" data-toggle="modal" data-target="#mymodal">About</a></li></ul></li>
                 </ul>
                 
                 <?php }elseif($this->session->userdata['level']=='dosen') { ?>
@@ -74,7 +74,7 @@
                     </ul>
                   </li>
                   <li><a><i class="fa fa-info-circle"></i> About <span class="fa fa-chevron-down"></span></a>
-                  <ul class="nav child_menu"><li><?=anchor($level.'/about/','About');?></li></ul></li>
+                      <ul class="nav child_menu"><li><a href="#" id="fc_create" data-toggle="modal" data-target="#mymodal">About</a></li></ul></li>
                 </ul>
                 
                 <?php }
@@ -84,14 +84,14 @@
                   <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                         <li><?=anchor('admin','welcome');?></li>  
-                        <li><?=anchor('admin/pendaftaran/','Pendaftaran');?></li> 
+                        <li><?=anchor('admin/pendaftaran_/','Pendaftaran');?></li> 
                         <li><?=anchor('admin/Datadosen/','Daftar Data Dosen');?></li>
-                        <li><?=anchor('admin/Dataset/','Dataset');?></li>
+                        <li><?=anchor('admin/Dataset/','Data Training');?></li>
                         <li><?=anchor('admin/Users/','Users');?></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-info-circle"></i> About <span class="fa fa-chevron-down"></span></a>
-                  <ul class="nav child_menu"><li><?=anchor($level.'/about/','About');?></li></ul></li>
+                  <ul class="nav child_menu"><li><a href="#" id="fc_create" data-toggle="modal" data-target="#mymodal">About</a></li></ul></li>
                 </ul>
                 
                 <?php }?>
@@ -152,6 +152,34 @@
       </div>
     </div>
 
+    <!-- modal -->
+    <div id="mymodal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h4 class="modal-title" id="myModalLabel">About Program</h4>
+          </div>
+          <div class="modal-body">
+            <div id="testmodal" style="padding: 5px 20px;">
+              <form id="antoform" class="form-horizontal calender" role="form">
+                <div class="form-group">
+                  <!-- Content About -->
+                  <b><p align="center">
+                      Developer : Rizal Darmawan Nugroho <br/>
+                  </p>
+                  </b>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default antoclose" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- jQuery -->
     <script src="<?= base_url(); ?>vendors/jquery/jquery.min.js"></script>
     <!-- Bootstrap -->

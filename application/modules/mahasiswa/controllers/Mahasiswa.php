@@ -29,8 +29,26 @@ class Mahasiswa extends CI_Controller {
             $k3= $this->input->post('nama_kriteria3');
             $k4= $this->input->post('nama_kriteria4');
             $judul= $this->input->post('judul');
-            
-            echo "id = $id_users,nama = $nama,npm = $npm,email = $email,nohp = $nomor, kriteria 1 = $k1,kriteria 2 = $k2,kriteria 3 = $k3,kriteria 4 = $k4";
+            $kelas= $this->input->post('kelas');
+            $periode= $this->input->post('periode');
+            if($k1== '' && $k2== '' && $k3== '' && $k4 == ''){
+                $this->load->model('app_model');
+                $data = array('title'=>'Data Mahasiswa',
+                'dd' => $this->app_model->kriteria1(),
+                'nama_kriteria' => $this->input->post('nama_kriteria1') ? $this->input->post('nama_kriteria1') : '',
+                'dd1' => $this->app_model->kriteria2(),
+                'nama_kriteria2' => $this->input->post('nama_kriteria2') ? $this->input->post('nama_kriteria2') : '',
+                'dd2' => $this->app_model->kriteria3(),
+                'nama_kriteria3' => $this->input->post('nama_kriteria3') ? $this->input->post('nama_kriteria3') : '',
+                'dd3' => $this->app_model->kriteria4(),
+                'nama_kriteria4' => $this->input->post('nama_kriteria4') ? $this->input->post('nama_kriteria4') : '',);
+                $this->template->load('template','data_mahasiswa_view',$data);
+            }else{
+            $this->app_model->bayes($k1,$k2,$k3,$k4,$id_users,$nama,$judul,$npm,$nomor,$email,$kelas,$periode);
+            $data['title'] = "Pengumuman";
+            $data['message']="<div class='alert alert-success'>Proses Pendaftaran Berhasil</div>";
+            $this->template->load('template','pengumuman',$data);
+            }
         }
         else{
             $this->load->model('app_model');
@@ -43,7 +61,7 @@ class Mahasiswa extends CI_Controller {
             'nama_kriteria3' => $this->input->post('nama_kriteria3') ? $this->input->post('nama_kriteria3') : '',
             'dd3' => $this->app_model->kriteria4(),
             'nama_kriteria4' => $this->input->post('nama_kriteria4') ? $this->input->post('nama_kriteria4') : '',);
-        $this->template->load('template','data_mahasiswa_view',$data);
+            $this->template->load('template','data_mahasiswa_view',$data);
         }
         
     }
@@ -72,6 +90,7 @@ class Mahasiswa extends CI_Controller {
     
     public function pengumuman(){
         $data['title'] = "Pengumuman";
+        $data['message']="";
         $this->template->load('template','pengumuman',$data);
     }
     

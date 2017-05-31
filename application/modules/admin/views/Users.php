@@ -42,6 +42,9 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
+                      <div><?=form_open('admin/tambah_users');?>
+                      <?=  form_input(array('type'=>'submit','class'=>'btn btn-success btn-sm','value'=>'Tambah Users','name'=>'submit'));?>
+                      </div>
                       <?php echo $message;?>
                       
                       <!-- Tabel -->
@@ -66,7 +69,7 @@
                                 <td><?php echo $row->password;?></td>
                                 <td><?php echo $row->level;?></td>
                                 <td align="center"><?=anchor('admin/dataku/'.$row->id_users,'<i class="glyphicon glyphicon-edit"></i>');?></td>
-                                <td align="center"><?=anchor('admin/hapus_data/'.$row->id_users,'<i class="glyphicon glyphicon-trash"></i>');?></td>
+                                <td align="center"><?=anchor('admin/hapus_user/'.$row->id_users,'<i class="glyphicon glyphicon-trash"></i>');?></td>
                                 </tr>
                                 <?php endforeach;?>
                              </tbody>

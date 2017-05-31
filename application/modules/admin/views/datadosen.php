@@ -42,8 +42,7 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                  
-                      <!-- Tabel -->
+                          <!-- Tabel -->
                       <div class="table-responsive">
                         <Table class="table table-striped table-bordered">
                             <thead align="center">
@@ -54,7 +53,6 @@
                                 <td>No Hp</td>
                                 <td>Email</td>
                                 <td>Alamat</td>
-                                <td colspan="2" align="center">Action</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -66,8 +64,6 @@
                                 <td><?php echo $row->Notlp_Dosen;?></td>
                                 <td><?php echo $row->Email_Dosen;?></td>
                                 <td><?php echo $row->Alamat_Dosen;?></td>
-                                <td><?=anchor('admin/edit_data/'.$row->Id_Dosen,'<i class="glyphicon glyphicon-edit"></i>');?></td>
-                                <td><?=anchor('admin/hapus_data/'.$row->Id_Dosen,'<i class="glyphicon glyphicon-trash"></i>');?></td>
                                 </tr>
                                 <?php endforeach;?>
                              </tbody>

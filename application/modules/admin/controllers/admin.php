@@ -11,7 +11,7 @@ class Admin extends CI_Controller {
         }
         $this->load->library(array('pagination'));
     }
-    
+
     public function index(){
         $data = Array();
         $this->template->load('template','admin_dashboard',$data);
@@ -42,7 +42,7 @@ class Admin extends CI_Controller {
         }
     }
     //Menampilkan data pendaftaran
-    private $limit=20;
+    private $limit=10;
     function Pendaftaran($offset=0,$order_column='npm',$order_type='asc'){
         if(empty($offset)) $offset=0;
         if(empty($order_column)) $order_column='npm';
@@ -59,6 +59,26 @@ class Admin extends CI_Controller {
         $data['pagination']=$this->pagination->create_links();
         $data['message']='';
         $this->template->load('template','pendaftaran',$data);
+    }
+    
+    function Pendaftaran_(){
+        if(isset($_POST['submit'])){
+            $kode=  $this->input->post('periode');
+            if($kode="ALL"){
+                redirect ('Admin/Pendaftaran');
+            }else{
+                $data['anggota']=$this->app_model->daftar_($kode)->result();
+                $data['title']="Data Pendaftaran";
+                $this->template->load('template','Pendaftaran_',$data);   
+            }
+        }else{
+            $this->load->model('app_model');
+            $data = array(
+                'dd' => $this->app_model->pilih_periode(),
+                'periode' => $this->input->post('periode') ? $this->input->post('periode') : ''
+                );
+            $this->template->load('template','Pendaftaran_',$data);
+        }
     }
     //Menampilkan Data Dosen
     function Datadosen($offset=0,$order_column='id_Dosen',$order_type='asc'){
@@ -114,7 +134,7 @@ class Admin extends CI_Controller {
     }
     //seleksi data users berdasarkan id users
     function dataku($kode){
-        $data_konten	= $this->app_model->getSlider($kode)->result_array();
+        $data_konten	= $this->app_model->getusers($kode)->result_array();
 
 
 		$data = array(
@@ -129,5 +149,77 @@ class Admin extends CI_Controller {
                 $this->template->load('template','editusers',$data);
     }
     
+    function tambah_users(){
+        if(isset($_POST['submit'])){
+            $this->load->model('app_model');
+            $data = array('title'=>'Add Users',
+            'dd' => $this->app_model->levelusers(),
+            'level' => $this->input->post('level') ? $this->input->post('level') : '',
+            'dd1' => $this->app_model->pilih_periode(),
+            'periode' => $this->input->post('periode') ? $this->input->post('periode') : ''
+            );
+            $this->template->load('template','tambah_users',$data);
+        }
+        if(isset($_POST['submit1'])){
+            $nama   = $this->input->post('nama');
+            $username  = $this->input->post('username');
+            $password = $this->input->post('password');
+            $periode  = $this->input->post('periode');
+            $level =   $this->input->post('level');
+            $this->app_model->add_users($nama,$username,$password,$periode,$level);
+            redirect ('admin/Users');
+        }
+        else{
+            $this->load->model('app_model');
+            $data = array('title'=>'Add Users',
+            'dd' => $this->app_model->levelusers(),
+            'level' => $this->input->post('level') ? $this->input->post('level') : '',
+            );
+            $this->template->load('template','tambah_users',$data);
+        }
+    }
     
+    function view_detail($kode) {
+        $data_konten	= $this->app_model->caridata($kode)->result_array();
+       
+        $data = array(
+            'nama'=>$data_konten[0]['nama'],
+            'k_judul'=>$data_konten[0]['k_judul'],
+            'k_program'=>$data_konten[0]['k_program'],
+            'metode'=>$data_konten[0]['metode'],
+            'pendaftar'=>$data_konten[0]['pendaftar'],
+            'email'=>$data_konten[0]['email'],
+            'judul'=>$data_konten[0]['judul']
+        );
+        $this->template->load('template','view_detail',$data);
+    }
+    
+    function hapus_data($kode){
+        $data_konten	= $this->app_model->hapus_pendaftar($kode);
+        redirect ('Admin/Pendaftaran');
+    }
+    
+    function hapus_user($kode){
+        $data_konten	= $this->app_model->hapus_users($kode);
+        $data['message']="<div class='alert alert-danger'>Data Berhasil Dihapus</div>"; 
+    }
+    
+    //Menampilkan Data Users
+    function Dataset($offset=0,$order_column='ID_data',$order_type='asc'){
+        if(empty($offset)) $offset=0;
+        if(empty($order_column)) $order_column='ID_data';
+        if(empty($order_type)) $order_type='asc';
+        
+        $data['anggota']=$this->app_model->datatraining($this->limit,$offset,$order_column,$order_type)->result();
+        $data['title']="Data Training";
+        
+        $config['base_url']=site_url('admin/Dataset/');
+        $config['total_rows']=$this->app_model->jumlah();
+        $config['per_page']=$this->limit;
+        $config['uri_segment']=3;
+        $this->pagination->initialize($config);
+        $data['pagination']=$this->pagination->create_links();
+        $data['message']="";
+        $this->template->load('template','Training',$data);
+    }
 }

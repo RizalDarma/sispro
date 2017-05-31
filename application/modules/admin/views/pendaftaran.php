@@ -8,7 +8,7 @@
               <div class="title_right">
                 <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
                   <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for...">
+                    <input type="text" class="form-control" name="periodedaftar" placeholder="Search for..."  id="periodedaftar">
                     <span class="input-group-btn">
                       <button class="btn btn-default" type="button">Go!</button>
                     </span>
@@ -53,10 +53,7 @@
                                 <td>Nama</td>
                                 <td>Kelas</td>
                                 <td>No Hp</td>
-                                <td>K. Judul</td>
-                                <td>K. Program</td>
-                                <td>Metode</td>
-                                <td>Pendaftar</td>
+                                <td>Dosen Pembimbing</td>
                                 <td>Periode</td>
                                 <td colspan="3" align="center">Action</td>
                                 </tr>
@@ -64,19 +61,16 @@
                             <tbody>
                                 <?php $no=0; foreach($anggota as $row ): $no++;?>
                                 <tr>
-                                <td><?php echo $no;?></td>
+                                <td align="center"><?php echo $no;?></td>
                                 <td><?php echo $row->npm;?></td>
                                 <td><?php echo $row->nama;?></td>
                                 <td><?php echo $row->kelas;?></td>
                                 <td><?php echo $row->no_hp;?></td>
-                                <td><?php echo $row->k_judul;?></td>
-                                <td><?php echo $row->k_program;?></td>
-                                <td><?php echo $row->metode;?></td>
-                                <td><?php echo $row->pendaftar;?></td>
+                                <td><?php echo $row->nama_dosen;?></td>
                                 <td><?php echo $row->periode;?></td>
                                 <td><?=anchor('admin/edit_data/'.$row->npm,'<i class="glyphicon glyphicon-edit"></i>');?></td>
                                 <td><?=anchor('admin/hapus_data/'.$row->npm,'<i class="glyphicon glyphicon-trash"></i>');?></td>
-                                <td><?=anchor('admin/','<i class="glyphicon glyphicon-eye-open"></i>');?></td>
+                                <td><?=anchor('admin/view_detail/'.$row->npm,'<i class="glyphicon glyphicon-eye-open"></i>');?></td>
                                 </tr>
                                 <?php endforeach;?>
                              </tbody>
@@ -88,3 +82,11 @@
               </div>
             </div>
           </div>
+
+        <script>
+            $(document).ready(function () {
+                $(".select2").select2({
+                    placeholder: "Please Select"
+                });
+            });
+        </script>

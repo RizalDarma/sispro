@@ -42,7 +42,91 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                     
+                      <!-- thumbnail menu welcome -->
+                      <div class="col-md-55">
+                        <div class="thumbnail">
+                          <div class="image view view-first">
+                            <img style="width: 100%; display: block;" src="<?= base_url(); ?>images/media.jpg" alt="image" />
+                            <div class="mask">
+                              <p>Welcome</p>
+                              <div class="tools tools-bottom">
+                                <?=anchor('admin','<i class="fa fa-home"></i>');?></a>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="caption">
+                            <p align='center'>Welcome</p>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- thumbnail Pendaftaran -->
+                      <div class="col-md-55">
+                        <div class="thumbnail">
+                          <div class="image view view-first">
+                            <img style="width: 100%; display: block;" src="<?= base_url(); ?>images/media.jpg" alt="image" />
+                            <div class="mask">
+                              <p>Pendaftaran</p>
+                              <div class="tools tools-bottom">
+                                <?=anchor('admin/pendaftaran','<i class="fa fa-list"></i>');?></a>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="caption">
+                            <p align='center'>Pendaftaran</p>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- thumbnail Data Dosen -->
+                      <div class="col-md-55">
+                        <div class="thumbnail">
+                          <div class="image view view-first">
+                            <img style="width: 100%; display: block;" src="<?= base_url(); ?>images/media.jpg" alt="image" />
+                            <div class="mask">
+                              <p>Data Dosen</p>
+                              <div class="tools tools-bottom">
+                                <?=anchor('admin/Datadosen','<i class="fa fa-list-alt"></i>');?></a>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="caption">
+                            <p align='center'>Data Dosen</p>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- thumbnail Users -->
+                      <div class="col-md-55">
+                        <div class="thumbnail">
+                          <div class="image view view-first">
+                            <img style="width: 100%; display: block;" src="<?= base_url(); ?>images/media.jpg" alt="image" />
+                            <div class="mask">
+                              <p>Users</p>
+                              <div class="tools tools-bottom">
+                                <?=anchor('admin/Users','<i class="fa fa-users"></i>');?></a>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="caption">
+                            <p align='center'>Users</p>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- thumbnail Log Out -->
+                      <div class="col-md-55">
+                        <div class="thumbnail">
+                          <div class="image view view-first">
+                            <img style="width: 100%; display: block;" src="<?= base_url(); ?>images/media.jpg" alt="image" />
+                            <div class="mask">
+                              <p>Log Out</p>
+                              <div class="tools tools-bottom">
+                                <?php echo anchor('login/logout','<i class="fa fa-sign-out pull-right"></i>');?>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="caption">
+                            <p align='center'>Log Out</p>
+                          </div>
+                        </div>
+                      </div>
                   </div>
                 </div>
               </div>
