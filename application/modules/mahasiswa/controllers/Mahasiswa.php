@@ -47,7 +47,7 @@ class Mahasiswa extends CI_Controller {
             $this->app_model->bayes($k1,$k2,$k3,$k4,$id_users,$nama,$judul,$npm,$nomor,$email,$kelas,$periode);
             $data['title'] = "Pengumuman";
             $data['message']="<div class='alert alert-success'>Proses Pendaftaran Berhasil</div>";
-            $this->template->load('template','pengumuman',$data);
+            $this->template->load('template','pengumuman_1',$data);
             }
         }
         else{
@@ -88,10 +88,27 @@ class Mahasiswa extends CI_Controller {
         }
     }
     
-    public function pengumuman(){
+    public function pengumuman_1(){
         $data['title'] = "Pengumuman";
         $data['message']="";
-        $this->template->load('template','pengumuman',$data);
+        $this->template->load('template','pengumuman_1',$data);
     }
     
+    
+    function Hasil_pengumuman(){
+        $id_users=  $this->session->userdata['username'];
+        $data_konten	= $this->app_model->pengumuman_dospem($id_users)->result_array();
+        $this->load->model('app_model');
+        $data = array(
+            'message'=>'',
+            'npm'=> $data_konten[0]['npm'],
+            'nama'=> $data_konten[0]['nama'],
+            'kelas'=>$data_konten[0]['kelas'],
+            'no_hp'=>$data_konten[0]['no_hp'],
+            'periode'=>$data_konten[0]['periode'],
+            'nama_dosen'=>$data_konten[0]['nama_dosen'],
+        );
+        $data['title']="Pengumuman Pendaftaran";
+        $this->template->load('template','pengumuman',$data);
+    }
 }

@@ -42,7 +42,7 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                  
+                      
                       <!-- Tabel -->
                       <div class="table-responsive">
                         <Table class="table table-striped table-bordered">

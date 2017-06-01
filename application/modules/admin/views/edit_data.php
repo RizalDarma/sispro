@@ -2,7 +2,7 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3></h3>
+                <h3><?=$title?></h3>
               </div>
 
               <div class="title_right">
@@ -23,7 +23,7 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                      <h2><?=$title?></h2>
+                    <h2></h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -41,33 +41,35 @@
                     </ul>
                     <div class="clearfix"></div>
                   </div>
-                  <div class="x_content">
-                  <?php echo $message;?>
-                      <!-- content -->
-                        <div class="table-responsive">
-                        <Table class="table table-striped table-bordered">
-                            <thead align="center">
-                                <tr>
-                                <td>NPM</td>
-                                <td>Nama</td>
-                                <td>Kelas</td>
-                                <td>Dosen Pembimbing</td>
-                                <td>Periode</td>
-                                <td align="center">Action</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                <td align="center"><?php echo $npm;?></td>
-                                <td align="center"><?php echo $nama;?></td>
-                                <td align="center"><?php echo $kelas;?></td>
-                                <td align="center"><?php echo $nama_dosen;?></td>
-                                <td align="center"><?php echo $periode;?></td>
-                                <td align="center"><?=anchor('mahasiswa/#/','<i class="glyphicon glyphicon-eye-open"></i>');?></td>
-                                </tr>
-                             </tbody>
-                        </Table>
-                      </div>
+                  <div class="x_content" ">
+                      <?php echo $message;?>
+                      <?=form_open('Admin/ubah_pembimbing');?>
+                      <table border=0>
+                        <tr>
+                            <td>
+                            
+                            <label class="col-sm-3 control-label">NPM</label>
+                            <div class="col-sm-9">
+                            <?=form_input(array('type'=>'text','class'=>'form-control','value'=>$npm,'name'=>'npm','readonly'=>'readonly'));?>
+                            </div>
+                  
+                            <label class="col-sm-3 control-label">Nama Users</label>
+                            <div class="col-sm-9">
+                            <?=form_input(array('type'=>'text','class'=>'form-control','value'=>$nama,'name'=>'nama','readonly'=>'readonly'));?>
+                            </div>
+                            
+                            <label class="col-sm-3 control-label">Pilih Dosen</label>
+                            <div class="col-sm-9">
+                            <?php $dd_attribute = 'class="form-control select2"'; ?>
+                            <?=form_dropdown('dosen', $dd , $dosen , $dd_attribute); ?>
+                            </div>
+                            
+                            <div>
+                            <?=  form_input(array('type'=>'submit','class'=>'btn btn-default submit','value'=>'Simpan','name'=>'submit'));?>
+                            </div>
+                            </td>
+                        </tr>
+                    </table>
                   </div>
                 </div>
               </div>

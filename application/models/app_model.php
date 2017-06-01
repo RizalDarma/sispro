@@ -31,6 +31,7 @@ class App_model extends CI_Model {
     public function caridata($where){
         return $this->db->query("select * from `pendaftaran` where `npm` = '$where';");
     }
+    
     //hapus pendaftar
     public function hapus_pendaftar($where){
         return $this->db->query("delete from `pendaftaran` where `npm` = '$where';");
@@ -47,7 +48,9 @@ class App_model extends CI_Model {
             $this->db->order_by($this->npm,'asc');
         else
             $this->db->order_by($order_column,$order_type);
-        return $this->db->query("SELECT * FROM pendaftaran");
+        return $this->db->query("SELECT pendaftaran.`npm`, pendaftaran.`nama`, pendaftaran.`kelas`,
+            pendaftaran.`no_hp`, pendaftaran.`periode`, app_users.`nama` as nama_dosen FROM pendaftaran
+            INNER JOIN app_users ON pendaftaran.`nama_dosen`=app_users.`id_users`");
     }
     public function daftar_($kode){
         return $this->db->query("SELECT * FROM pendaftaran where periode='$kode';");
@@ -98,6 +101,20 @@ class App_model extends CI_Model {
     
         function  add_users($nama,$username,$password,$periode,$level){
             return $this->db->query("INSERT INTO `app_users`(`username`, `nama`, `password`, `level`, `Periode`) VALUES ('$username','$nama',md5('$password'),'$level','$periode')");
+        }
+        
+        function pilih_dosen(){
+            $this->db->order_by('nama','asc');
+            $result = $this->db->query("SELECT `nama` FROM `app_users` WHERE `level`='dosen'");
+            
+            $dd[''] = '';
+            if ($result->num_rows() > 0) {
+            foreach ($result->result() as $row) {
+            // tentukan value (sebelah kiri) dan labelnya (sebelah kanan)
+                $dd[$row->nama] = $row->nama;
+                }
+            }
+            return $dd;
         }
         
         function pilih_periode(){
@@ -169,12 +186,12 @@ class App_model extends CI_Model {
             }
             return $dd3;
         }
-        
+        /*
         function bayes2(){
             for ($k=1;$k<=4;$k++){
                 
             }
-        }
+        }*/
         
         
         //select kriteria 1 berdasarkan dosen
@@ -615,9 +632,7 @@ class App_model extends CI_Model {
             if($akhir1>=$akhir2 && $akhir1>=$akhir3 && $akhir1>=$akhir4 && $akhir1>=$akhir5 && $akhir1>=$akhir6 && $akhir1>=$akhir7 && $akhir1>=$akhir8 && $akhir1>=$akhir9 && $akhir1>=$akhir10 && $akhir1>=$akhir11 && $akhir1>=$akhir12 && $akhir1>=$akhir13 && $akhir1>=$akhir14){
                 $query = "select * from pendaftaran where id_user='$id_users'";
                 $hasil = $this->db->query($query);
-                $query = "select nama from app_users where id_users='3';";
-                $namdos = $this->db->query($query)->row();
-                $nama_dosen = strval($namdos->nama);
+                $nama_dosen = "3";
                 if($hasil->num_rows()>0){
                     $query = "UPDATE `pendaftaran` SET `npm`='$npm',`nama`='$nama',`kelas`='$kelas',`email`='$email',`no_hp`='$nomor',`k_judul`='$k1',`k_program`='$k2',`metode`='$k3',`pendaftar`='$k4',`judul`='$judul',`periode`='$periode',`nama_dosen`='$nama_dosen',`status`='N' WHERE id_user='$id_users';";
                     $final = $this->db->query($query);
@@ -630,9 +645,7 @@ class App_model extends CI_Model {
             }elseif($akhir2>=$akhir1 && $akhir2>=$akhir3 && $akhir2>=$akhir4 && $akhir2>=$akhir5 && $akhir2>=$akhir6 && $akhir2>=$akhir7 && $akhir2>=$akhir8 && $akhir2>=$akhir9 && $akhir2>=$akhir10 && $akhir2>=$akhir11 && $akhir2>=$akhir12 && $akhir2>=$akhir13 && $akhir2>=$akhir14){
                 $query = "select * from pendaftaran where id_user='$id_users'";
                 $hasil = $this->db->query($query);
-                $query = "select nama from app_users where id_users='4';";
-                $namdos = $this->db->query($query)->row();
-                $nama_dosen = strval($namdos->nama);
+                $nama_dosen = "4";
                 if($hasil->num_rows()>0){
                     $query = "UPDATE `pendaftaran` SET `npm`='$npm',`nama`='$nama',`kelas`='$kelas',`email`='$email',`no_hp`='$nomor',`k_judul`='$k1',`k_program`='$k2',`metode`='$k3',`pendaftar`='$k4',`judul`='$judul',`periode`='$periode',`nama_dosen`='$nama_dosen',`status`='N' WHERE id_user='$id_users';";
                     $final = $this->db->query($query);
@@ -645,9 +658,7 @@ class App_model extends CI_Model {
             }elseif($akhir3>=$akhir1 && $akhir3>=$akhir2 && $akhir3>=$akhir4 && $akhir3>=$akhir5 && $akhir3>=$akhir6 && $akhir3>=$akhir7 && $akhir3>=$akhir8 && $akhir3>=$akhir9 && $akhir3>=$akhir10 && $akhir3>=$akhir11 && $akhir3>=$akhir12 && $akhir3>=$akhir13 && $akhir3>=$akhir14){
                 $query = "select * from pendaftaran where id_user='$id_users'";
                 $hasil = $this->db->query($query);
-                $query = "select nama from app_users where id_users='5';";
-                $namdos = $this->db->query($query)->row();
-                $nama_dosen = strval($namdos->nama);
+                $nama_dosen = "5";
                 if($hasil->num_rows()>0){
                     $query = "UPDATE `pendaftaran` SET `npm`='$npm',`nama`='$nama',`kelas`='$kelas',`email`='$email',`no_hp`='$nomor',`k_judul`='$k1',`k_program`='$k2',`metode`='$k3',`pendaftar`='$k4',`judul`='$judul',`periode`='$periode',`nama_dosen`='$nama_dosen',`status`='N' WHERE id_user='$id_users';";
                     $final = $this->db->query($query);
@@ -660,9 +671,7 @@ class App_model extends CI_Model {
             }elseif($akhir4>=$akhir1 && $akhir4>=$akhir2 && $akhir4>=$akhir3 && $akhir4>=$akhir5 && $akhir4>=$akhir6 && $akhir4>=$akhir7 && $akhir4>=$akhir8 && $akhir4>=$akhir9 && $akhir4>=$akhir10 && $akhir4>=$akhir11 && $akhir4>=$akhir12 && $akhir4>=$akhir13 && $akhir4>=$akhir14){
                 $query = "select * from pendaftaran where id_user='$id_users'";
                 $hasil = $this->db->query($query);
-                $query = "select nama from app_users where id_users='6';";
-                $namdos = $this->db->query($query)->row();
-                $nama_dosen = strval($namdos->nama);
+                $nama_dosen = "6";
                 if($hasil->num_rows()>0){
                     $query = "UPDATE `pendaftaran` SET `npm`='$npm',`nama`='$nama',`kelas`='$kelas',`email`='$email',`no_hp`='$nomor',`k_judul`='$k1',`k_program`='$k2',`metode`='$k3',`pendaftar`='$k4',`judul`='$judul',`periode`='$periode',`nama_dosen`='$nama_dosen',`status`='N' WHERE id_user='$id_users';";
                     $final = $this->db->query($query);
@@ -675,9 +684,7 @@ class App_model extends CI_Model {
             }elseif($akhir5>=$akhir1 && $akhir5>=$akhir2 && $akhir5>=$akhir3 && $akhir5>=$akhir4 && $akhir5>=$akhir6 && $akhir5>=$akhir7 && $akhir5>=$akhir8 && $akhir5>=$akhir9 && $akhir5>=$akhir10 && $akhir5>=$akhir11 && $akhir5>=$akhir12 && $akhir5>=$akhir13 && $akhir5>=$akhir14){
                 $query = "select * from pendaftaran where id_user='$id_users'";
                 $hasil = $this->db->query($query);
-                $query = "select nama from app_users where id_users='7';";
-                $namdos = $this->db->query($query)->row();
-                $nama_dosen = strval($namdos->nama);
+                $nama_dosen = "7";
                 if($hasil->num_rows()>0){
                     $query = "UPDATE `pendaftaran` SET `npm`='$npm',`nama`='$nama',`kelas`='$kelas',`email`='$email',`no_hp`='$nomor',`k_judul`='$k1',`k_program`='$k2',`metode`='$k3',`pendaftar`='$k4',`judul`='$judul',`periode`='$periode',`nama_dosen`='$nama_dosen',`status`='N' WHERE id_user='$id_users';";
                     $final = $this->db->query($query);
@@ -690,9 +697,7 @@ class App_model extends CI_Model {
             }elseif($akhir6>=$akhir1 && $akhir6>=$akhir2 && $akhir6>=$akhir3 && $akhir6>=$akhir4 && $akhir6>=$akhir5 && $akhir6>=$akhir7 && $akhir6>=$akhir8 && $akhir6>=$akhir9 && $akhir6>=$akhir10 && $akhir6>=$akhir11 && $akhir6>=$akhir12 && $akhir6>=$akhir13 && $akhir6>=$akhir14){
                 $query = "select * from pendaftaran where id_user='$id_users'";
                 $hasil = $this->db->query($query);
-                $query = "select nama from app_users where id_users='8';";
-                $namdos = $this->db->query($query)->row();
-                $nama_dosen = strval($namdos->nama);
+                $nama_dosen = "8";
                 if($hasil->num_rows()>0){
                     $query = "UPDATE `pendaftaran` SET `npm`='$npm',`nama`='$nama',`kelas`='$kelas',`email`='$email',`no_hp`='$nomor',`k_judul`='$k1',`k_program`='$k2',`metode`='$k3',`pendaftar`='$k4',`judul`='$judul',`periode`='$periode',`nama_dosen`='$nama_dosen',`status`='N' WHERE id_user='$id_users';";
                     $final = $this->db->query($query);
@@ -705,9 +710,7 @@ class App_model extends CI_Model {
             }elseif($akhir7>=$akhir1 && $akhir7>=$akhir2 && $akhir7>=$akhir3 && $akhir7>=$akhir4 && $akhir7>=$akhir5 && $akhir7>=$akhir6 && $akhir7>=$akhir8 && $akhir7>=$akhir9 && $akhir7>=$akhir10 && $akhir7>=$akhir11 && $akhir7>=$akhir12 && $akhir7>=$akhir13 && $akhir7>=$akhir14){
                 $query = "select * from pendaftaran where id_user='$id_users'";
                 $hasil = $this->db->query($query);
-                $query = "select nama from app_users where id_users='9';";
-                $namdos = $this->db->query($query)->row();
-                $nama_dosen = strval($namdos->nama);
+                $nama_dosen = "9";
                 if($hasil->num_rows()>0){
                     $query = "UPDATE `pendaftaran` SET `npm`='$npm',`nama`='$nama',`kelas`='$kelas',`email`='$email',`no_hp`='$nomor',`k_judul`='$k1',`k_program`='$k2',`metode`='$k3',`pendaftar`='$k4',`judul`='$judul',`periode`='$periode',`nama_dosen`='$nama_dosen',`status`='N' WHERE id_user='$id_users';";
                     $final = $this->db->query($query);
@@ -720,9 +723,7 @@ class App_model extends CI_Model {
             }elseif($akhir8>=$akhir1 && $akhir8>=$akhir2 && $akhir8>=$akhir3 && $akhir8>=$akhir4 && $akhir8>=$akhir5 && $akhir8>=$akhir6 && $akhir8>=$akhir7 && $akhir8>=$akhir9 && $akhir8>=$akhir10 && $akhir8>=$akhir11 && $akhir8>=$akhir12 && $akhir8>=$akhir13 && $akhir8>=$akhir14){
                 $query = "select * from pendaftaran where id_user='$id_users'";
                 $hasil = $this->db->query($query);
-                $query = "select nama from app_users where id_users='10';";
-                $namdos = $this->db->query($query)->row();
-                $nama_dosen = strval($namdos->nama);
+                $nama_dosen = "10";
                 if($hasil->num_rows()>0){
                     $query = "UPDATE `pendaftaran` SET `npm`='$npm',`nama`='$nama',`kelas`='$kelas',`email`='$email',`no_hp`='$nomor',`k_judul`='$k1',`k_program`='$k2',`metode`='$k3',`pendaftar`='$k4',`judul`='$judul',`periode`='$periode',`nama_dosen`='$nama_dosen',`status`='N' WHERE id_user='$id_users';";
                     $final = $this->db->query($query);
@@ -735,9 +736,7 @@ class App_model extends CI_Model {
             }elseif($akhir9>=$akhir1 && $akhir9>=$akhir2 && $akhir9>=$akhir3 && $akhir9>=$akhir4 && $akhir9>=$akhir5 && $akhir9>=$akhir6 && $akhir9>=$akhir7 && $akhir9>=$akhir8 && $akhir9>=$akhir10 && $akhir9>=$akhir11 && $akhir9>=$akhir12 && $akhir9>=$akhir13 && $akhir9>=$akhir14){
                 $query = "select * from pendaftaran where id_user='$id_users'";
                 $hasil = $this->db->query($query);
-                $query = "select nama from app_users where id_users='11';";
-                $namdos = $this->db->query($query)->row();
-                $nama_dosen = strval($namdos->nama);
+                $nama_dosen = "11";
                 if($hasil->num_rows()>0){
                     $query = "UPDATE `pendaftaran` SET `npm`='$npm',`nama`='$nama',`kelas`='$kelas',`email`='$email',`no_hp`='$nomor',`k_judul`='$k1',`k_program`='$k2',`metode`='$k3',`pendaftar`='$k4',`judul`='$judul',`periode`='$periode',`nama_dosen`='$nama_dosen',`status`='N' WHERE id_user='$id_users';";
                     $final = $this->db->query($query);
@@ -750,9 +749,7 @@ class App_model extends CI_Model {
             }elseif($akhir10>=$akhir1 && $akhir10>=$akhir2 && $akhir10>=$akhir3 && $akhir10>=$akhir4 && $akhir10>=$akhir5 && $akhir10>=$akhir6 && $akhir10>=$akhir7 && $akhir10>=$akhir8 && $akhir10>=$akhir9 && $akhir10>=$akhir11 && $akhir10>=$akhir12 && $akhir10>=$akhir13 && $akhir10>=$akhir14){
                 $query = "select * from pendaftaran where id_user='$id_users'";
                 $hasil = $this->db->query($query);
-                $query = "select nama from app_users where id_users='12';";
-                $namdos = $this->db->query($query)->row();
-                $nama_dosen = strval($namdos->nama);
+                $nama_dosen = "12";
                 if($hasil->num_rows()>0){
                     $query = "UPDATE `pendaftaran` SET `npm`='$npm',`nama`='$nama',`kelas`='$kelas',`email`='$email',`no_hp`='$nomor',`k_judul`='$k1',`k_program`='$k2',`metode`='$k3',`pendaftar`='$k4',`judul`='$judul',`periode`='$periode',`nama_dosen`='$nama_dosen',`status`='N' WHERE id_user='$id_users';";
                     $final = $this->db->query($query);
@@ -765,9 +762,7 @@ class App_model extends CI_Model {
             }elseif($akhir11>=$akhir1 && $akhir11>=$akhir2 && $akhir11>=$akhir3 && $akhir11>=$akhir4 && $akhir11>=$akhir5 && $akhir11>=$akhir6 && $akhir11>=$akhir7 && $akhir11>=$akhir8 && $akhir11>=$akhir9 && $akhir11>=$akhir10 && $akhir11>=$akhir12 && $akhir11>=$akhir13 && $akhir11>=$akhir14){
                 $query = "select * from pendaftaran where id_user='$id_users'";
                 $hasil = $this->db->query($query);
-                $query = "select nama from app_users where id_users='13';";
-                $namdos = $this->db->query($query)->row();
-                $nama_dosen = strval($namdos->nama);
+                $nama_dosen = "13";
                 if($hasil->num_rows()>0){
                     $query = "UPDATE `pendaftaran` SET `npm`='$npm',`nama`='$nama',`kelas`='$kelas',`email`='$email',`no_hp`='$nomor',`k_judul`='$k1',`k_program`='$k2',`metode`='$k3',`pendaftar`='$k4',`judul`='$judul',`periode`='$periode',`nama_dosen`='$nama_dosen',`status`='N' WHERE id_user='$id_users';";
                     $final = $this->db->query($query);
@@ -780,9 +775,7 @@ class App_model extends CI_Model {
             }elseif($akhir12>=$akhir1 && $akhir12>=$akhir2 && $akhir12>=$akhir3 && $akhir12>=$akhir4 && $akhir12>=$akhir5 && $akhir12>=$akhir6 && $akhir12>=$akhir7 && $akhir12>=$akhir8 && $akhir12>=$akhir9 && $akhir12>=$akhir10 && $akhir12>=$akhir11 && $akhir12>=$akhir13 && $akhir12>=$akhir14){
                 $query = "select * from pendaftaran where id_user='$id_users'";
                 $hasil = $this->db->query($query);
-                $query = "select nama from app_users where id_users='14';";
-                $namdos = $this->db->query($query)->row();
-                $nama_dosen = strval($namdos->nama);
+                $nama_dosen = "14";
                 if($hasil->num_rows()>0){
                     $query = "UPDATE `pendaftaran` SET `npm`='$npm',`nama`='$nama',`kelas`='$kelas',`email`='$email',`no_hp`='$nomor',`k_judul`='$k1',`k_program`='$k2',`metode`='$k3',`pendaftar`='$k4',`judul`='$judul',`periode`='$periode',`nama_dosen`='$nama_dosen',`status`='N' WHERE id_user='$id_users';";
                     $final = $this->db->query($query);
@@ -795,9 +788,7 @@ class App_model extends CI_Model {
             }elseif($akhir13>=$akhir1 && $akhir13>=$akhir2 && $akhir13>=$akhir3 && $akhir13>=$akhir4 && $akhir13>=$akhir5 && $akhir13>=$akhir6 && $akhir13>=$akhir7 && $akhir13>=$akhir8 && $akhir13>=$akhir9 && $akhir13>=$akhir10 && $akhir13>=$akhir11 && $akhir13>=$akhir12 && $akhi13>=$akhir14){
                 $query = "select * from pendaftaran where id_user='$id_users'";
                 $hasil = $this->db->query($query);
-                $query = "select nama from app_users where id_users='15';";
-                $namdos = $this->db->query($query)->row();
-                $nama_dosen = strval($namdos->nama);
+                $nama_dosen = "15";
                 if($hasil->num_rows()>0){
                     $query = "UPDATE `pendaftaran` SET `npm`='$npm',`nama`='$nama',`kelas`='$kelas',`email`='$email',`no_hp`='$nomor',`k_judul`='$k1',`k_program`='$k2',`metode`='$k3',`pendaftar`='$k4',`judul`='$judul',`periode`='$periode',`nama_dosen`='$nama_dosen',`status`='N' WHERE id_user='$id_users';";
                     $final = $this->db->query($query);
@@ -808,9 +799,7 @@ class App_model extends CI_Model {
             }elseif($akhir14>=$akhir1 && $akhir14>=$akhir2 && $akhir14>=$akhir3 && $akhir14>=$akhir4 && $akhir14>=$akhir5 && $akhir14>=$akhir6 && $akhir14>=$akhir7 && $akhir14>=$akhir8 && $akhir14>=$akhir9 && $akhir14>=$akhir10 && $akhir14>=$akhir11 && $akhir14>=$akhir12 && $akhir14>=$akhir13){
                 $query = "select * from pendaftaran where id_user='$id_users'";
                 $hasil = $this->db->query($query);
-                $query = "select nama from app_users where id_users='16';";
-                $namdos = $this->db->query($query)->row();
-                $nama_dosen = strval($namdos->nama);
+                $nama_dosen = "16";
                 if($hasil->num_rows()>0){
                     $query = "UPDATE `pendaftaran` SET `npm`='$npm',`nama`='$nama',`kelas`='$kelas',`email`='$email',`no_hp`='$nomor',`k_judul`='$k1',`k_program`='$k2',`metode`='$k3',`pendaftar`='$k4',`judul`='$judul',`periode`='$periode',`nama_dosen`='$nama_dosen',`status`='N' WHERE id_user='$id_users';";
                     $final = $this->db->query($query);
@@ -836,4 +825,19 @@ class App_model extends CI_Model {
             }
             return $dd;
         }
+        
+        function update_pembimbing($nama,$npm,$dosen){
+            $query_1 = "select id_users  from app_users where nama='$dosen'";
+            $id = $this->db->query($query_1)->row();
+            $simpan = intval($id->id_users);
+            $query="UPDATE `pendaftaran` SET `nama_dosen`='$simpan' WHERE `npm`='$npm'";
+            $hasil= $this->db->query($query);
+            return $hasil;
+        }
+        
+        function pengumuman_dospem($i){
+        return $this->db->query("SELECT pendaftaran.`npm`, pendaftaran.`nama`, pendaftaran.`kelas`,
+            pendaftaran.`no_hp`, pendaftaran.`periode`, app_users.`nama` as nama_dosen FROM pendaftaran
+            INNER JOIN app_users ON pendaftaran.`nama_dosen`=app_users.`id_users`  where npm='$i'");
+    }
 }

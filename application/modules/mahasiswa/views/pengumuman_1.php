@@ -44,30 +44,6 @@
                   <div class="x_content">
                   <?php echo $message;?>
                       <!-- content -->
-                        <div class="table-responsive">
-                        <Table class="table table-striped table-bordered">
-                            <thead align="center">
-                                <tr>
-                                <td>NPM</td>
-                                <td>Nama</td>
-                                <td>Kelas</td>
-                                <td>Dosen Pembimbing</td>
-                                <td>Periode</td>
-                                <td align="center">Action</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                <td align="center"><?php echo $npm;?></td>
-                                <td align="center"><?php echo $nama;?></td>
-                                <td align="center"><?php echo $kelas;?></td>
-                                <td align="center"><?php echo $nama_dosen;?></td>
-                                <td align="center"><?php echo $periode;?></td>
-                                <td align="center"><?=anchor('mahasiswa/#/','<i class="glyphicon glyphicon-eye-open"></i>');?></td>
-                                </tr>
-                             </tbody>
-                        </Table>
-                      </div>
                   </div>
                 </div>
               </div>

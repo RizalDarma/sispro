@@ -84,7 +84,7 @@
                             <div class="mask">
                               <p>List Data Mahasiswa</p>
                               <div class="tools tools-bottom">
-                                <?=anchor('Mahasiswa/pengumuman/','<i class="fa fa-list"></i>');?></a>
+                                <?=anchor('Mahasiswa/Hasil_pengumuman/','<i class="fa fa-list"></i>');?></a>
                               </div>
                             </div>
                           </div>

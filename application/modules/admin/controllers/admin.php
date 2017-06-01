@@ -222,4 +222,29 @@ class Admin extends CI_Controller {
         $data['message']="";
         $this->template->load('template','Training',$data);
     }
+    
+    function edit_data($kode){
+        
+        $data_konten	= $this->app_model->caridata($kode)->result_array();
+        $this->load->model('app_model');
+        $data = array(
+            'message'=>'',
+            'title'=>'',
+            'npm'=> $data_konten[0]['npm'],
+            'nama'=> $data_konten[0]['nama'],
+            'dd' => $this->app_model->pilih_dosen(),
+            'dosen' => $this->input->post('dosen') ? $this->input->post('dosen') : '',
+        );
+        $this->template->load('template','edit_data',$data);
+        }
+        
+        function ubah_pembimbing(){
+        if(isset($_POST['submit'])){
+         $npm = $this->input->post('npm');
+         $nama = $this->input->post('nama');
+         $dosen = $this->input->post('dosen');
+         $this->app_model->update_pembimbing($nama,$npm,$dosen);
+         redirect ('Admin/Pendaftaran');
+        }
+    }
 }

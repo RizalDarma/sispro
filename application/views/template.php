@@ -56,7 +56,7 @@
                     <ul class="nav child_menu">
                       <li><?=anchor('Mahasiswa','Welcome');?></li>
                       <li><?=anchor('Mahasiswa/data_mahasiswa/','Data Mahasiswa');?></li>
-                      <li><?=anchor('Mahasiswa/pengumuman/','Pengumuman');?></li>
+                      <li><?=anchor('Mahasiswa/Hasil_pengumuman/','Pengumuman');?></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-info-circle"></i> About <span class="fa fa-chevron-down"></span></a>
@@ -84,7 +84,7 @@
                   <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                         <li><?=anchor('admin','welcome');?></li>  
-                        <li><?=anchor('admin/pendaftaran_/','Pendaftaran');?></li> 
+                        <li><?=anchor('admin/pendaftaran/','Pendaftaran');?></li> 
                         <li><?=anchor('admin/Datadosen/','Daftar Data Dosen');?></li>
                         <li><?=anchor('admin/Dataset/','Data Training');?></li>
                         <li><?=anchor('admin/Users/','Users');?></li>
