@@ -48,12 +48,27 @@ class App_model extends CI_Model {
             $this->db->order_by($this->npm,'asc');
         else
             $this->db->order_by($order_column,$order_type);
+        
         return $this->db->query("SELECT pendaftaran.`npm`, pendaftaran.`nama`, pendaftaran.`kelas`,
             pendaftaran.`no_hp`, pendaftaran.`periode`, app_users.`nama` as nama_dosen FROM pendaftaran
             INNER JOIN app_users ON pendaftaran.`nama_dosen`=app_users.`id_users`");
+        
     }
+    
+    function daftar_mahasiswa($kode){
+        return $this->db->query("SELECT * from pendaftaran where `nama_dosen`='$kode'");
+    }
+    
     public function daftar_($kode){
-        return $this->db->query("SELECT * FROM pendaftaran where periode='$kode';");
+        if($kode=="ALL" || $kode==NULL){
+            return $this->db->query("SELECT pendaftaran.`npm`, pendaftaran.`nama`, pendaftaran.`kelas`,
+            pendaftaran.`no_hp`, pendaftaran.`periode`, app_users.`nama` as nama_dosen FROM pendaftaran
+            INNER JOIN app_users ON pendaftaran.`nama_dosen`=app_users.`id_users`");
+        }else{
+        return $this->db->query("SELECT pendaftaran.`npm`, pendaftaran.`nama`, pendaftaran.`kelas`,
+            pendaftaran.`no_hp`, pendaftaran.`periode`, app_users.`nama` as nama_dosen FROM pendaftaran
+            INNER JOIN app_users ON pendaftaran.`nama_dosen`=app_users.`id_users` where pendaftaran.`periode`='$kode'");
+        }
     }
     function jumlah(){
         return $this->db->count_all($this->table);
@@ -118,14 +133,14 @@ class App_model extends CI_Model {
         }
         
         function pilih_periode(){
-            $this->db->order_by('Tahun_Periode','asc');
+            $this->db->order_by('npm','asc');
             $result = $this->db->get('periode_daftar');
             
             $dd[''] = '';
             if ($result->num_rows() > 0) {
             foreach ($result->result() as $row) {
             // tentukan value (sebelah kiri) dan labelnya (sebelah kanan)
-                $dd[$row->Tahun_Periode] = $row->Tahun_Periode;
+                $dd[$row->npm] = $row->npm;
                 }
             }
             return $dd;
@@ -836,8 +851,33 @@ class App_model extends CI_Model {
         }
         
         function pengumuman_dospem($i){
-        return $this->db->query("SELECT pendaftaran.`npm`, pendaftaran.`nama`, pendaftaran.`kelas`,
+        $hasil = $this->db->query("SELECT pendaftaran.`status`, pendaftaran.`npm`, pendaftaran.`nama`, pendaftaran.`kelas`,
             pendaftaran.`no_hp`, pendaftaran.`periode`, app_users.`nama` as nama_dosen FROM pendaftaran
             INNER JOIN app_users ON pendaftaran.`nama_dosen`=app_users.`id_users`  where npm='$i'");
+        return $hasil;
     }
+    
+        function biodata_dospem($id, $email, $alamat, $no_telp){
+            $cari = $this->db->query("Select * from biodata_dosen where id_Dosen='$id'");
+            if($cari->num_rows()>0){
+                $query = "UPDATE `biodata_dosen` SET `Notlp_Dosen`='$no_telp',`Alamat_Dosen`='$alamat',`Email_Dosen`='$email' WHERE id_Dosen='$id'";
+                $final = $this->db->query($query);
+                return $final;
+            }else{
+                $query = "INSERT INTO `biodata_dosen`(`Id_Dosen`, `Notlp_Dosen`, `Alamat_Dosen`, `Email_Dosen`) VALUES ('$id','$no_telp','$alamat','$email')";
+                $final = $this->db->query($query);
+                return $final;
+            }
+        }
+        
+        function view_biodata($id){
+            $hasil = $this->db->query("SELECT pendaftaran.`nama_dosen`, biodata_dosen.`Notlp_Dosen`, biodata_dosen.`Alamat_Dosen` , biodata_dosen.`Email_Dosen` FROM pendaftaran
+            INNER JOIN biodata_dosen ON pendaftaran.`nama_dosen`= biodata_dosen.`id_Dosen`  where id_user='$id'");
+            return $hasil;
+        }
+        function view_biodata2($id){
+            $hasil = $this->db->query("SELECT pendaftaran.`nama_dosen`, app_users.`username`, app_users.`nama` FROM pendaftaran
+            INNER JOIN app_users ON pendaftaran.`nama_dosen`= app_users.`id_users`  where id_user='$id'");
+            return $hasil;
+        }
 }

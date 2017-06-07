@@ -48,17 +48,44 @@ class Admin extends CI_Controller {
         if(empty($order_column)) $order_column='npm';
         if(empty($order_type)) $order_type='asc';
         
-        $data['anggota']=$this->app_model->daftar($this->limit,$offset,$order_column,$order_type)->result();
-        $data['title']="Data Pendaftaran";
+        $kode =  $this->input->post('periode');
         
-        $config['base_url']=site_url('admin/pendaftaran/');
-        $config['total_rows']=$this->app_model->jumlah();
-        $config['per_page']=$this->limit;
-        $config['uri_segment']=3;
-        $this->pagination->initialize($config);
-        $data['pagination']=$this->pagination->create_links();
-        $data['message']='';
-        $this->template->load('template','pendaftaran',$data);
+        if(isset ($_POST['submit'])){
+            $this->load->model('app_model');
+            $data = array(
+            'title'=> 'Data Pendaftaran',
+            'anggota'=> $this->app_model->daftar_($kode)->result(),
+            'dd1' => $this->app_model->pilih_periode(),
+            'periode' => $this->input->post('periode') ? $this->input->post('periode') : ''
+            );
+            $config['base_url']=site_url('admin/pendaftaran/');
+            $config['total_rows']=$this->app_model->jumlah();
+            $config['per_page']=$this->limit;
+            $config['uri_segment']=3;
+            $this->pagination->initialize($config);
+            $data['pagination']=$this->pagination->create_links();
+            $data['message']='';
+            $this->template->load('template','pendaftaran',$data);
+        }else{
+            $this->load->model('app_model');
+            $data = array(
+            'title'=> 'Data Pendaftaran',
+            'anggota'=> $this->app_model->daftar($this->limit,$offset,$order_column,$order_type)->result(),
+            'dd1' => $this->app_model->pilih_periode(),
+            'periode' => $this->input->post('periode') ? $this->input->post('periode') : ''
+            );
+            $config['base_url']=site_url('admin/pendaftaran/');
+            $config['total_rows']=$this->app_model->jumlah();
+            $config['per_page']=$this->limit;
+            $config['uri_segment']=3;
+            $this->pagination->initialize($config);
+            $data['pagination']=$this->pagination->create_links();
+            $data['message']='';
+            $this->template->load('template','pendaftaran',$data);
+        }
+        //$data['title']="Data Pendaftaran";
+        //if($order_column=="npm") $order_column='Tahun_Periode';
+        
     }
     
     function Pendaftaran_(){
@@ -149,6 +176,20 @@ class Admin extends CI_Controller {
                 $this->template->load('template','editusers',$data);
     }
     
+    function add_users(){
+        if(isset($_POST['submit1'])){
+            $nama   = $this->input->post('nama');
+            $username  = $this->input->post('username');
+            $password = $this->input->post('password');
+            $periode  = $this->input->post('periode');
+            $level =   $this->input->post('level');
+            $this->app_model->add_users($nama,$username,$password,$periode,$level);
+            redirect ('admin/Users');
+        }
+        elseif(isset($_POST['submit2'])){
+            redirect ('admin/Users');
+        }
+    }
     function tambah_users(){
         if(isset($_POST['submit'])){
             $this->load->model('app_model');
@@ -159,15 +200,6 @@ class Admin extends CI_Controller {
             'periode' => $this->input->post('periode') ? $this->input->post('periode') : ''
             );
             $this->template->load('template','tambah_users',$data);
-        }
-        if(isset($_POST['submit1'])){
-            $nama   = $this->input->post('nama');
-            $username  = $this->input->post('username');
-            $password = $this->input->post('password');
-            $periode  = $this->input->post('periode');
-            $level =   $this->input->post('level');
-            $this->app_model->add_users($nama,$username,$password,$periode,$level);
-            redirect ('admin/Users');
         }
         else{
             $this->load->model('app_model');

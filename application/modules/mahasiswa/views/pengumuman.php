@@ -61,9 +61,9 @@
                                 <td align="center"><?php echo $npm;?></td>
                                 <td align="center"><?php echo $nama;?></td>
                                 <td align="center"><?php echo $kelas;?></td>
-                                <td align="center"><?php echo $nama_dosen;?></td>
+                                <td align="center"><?php if($status=="N"){$nama_dosen = "-"; } echo $nama_dosen;?></td>
                                 <td align="center"><?php echo $periode;?></td>
-                                <td align="center"><?=anchor('mahasiswa/#/','<i class="glyphicon glyphicon-eye-open"></i>');?></td>
+                                <td align="center"><?=anchor('mahasiswa/view_data/','<i class="glyphicon glyphicon-eye-open"></i>');?></td>
                                 </tr>
                              </tbody>
                         </Table>

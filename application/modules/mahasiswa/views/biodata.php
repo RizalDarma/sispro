@@ -2,7 +2,7 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3><?=$title?></h3>
+                <h3></h3>
               </div>
 
               <div class="title_right">
@@ -23,7 +23,7 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Plain Page</h2>
+                      <h2><?=$title?></h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -42,31 +42,8 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                      <div class="table-responsive">
-                        <Table class="table table-striped table-bordered">
-                            <thead align="center">
-                                <tr>
-                                <td>No.</td>
-                                <td>NPM</td>
-                                <td>Nama</td>
-                                <td>No. Telp</td>
-                                <td>Judul</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php $no=0; foreach($anggota as $row ): $no++;?>
-                                <tr>
-                                <td align="center"><?php echo $no;?></td>
-                                <td align="center"><?php echo $row->npm;?></td>
-                                <td><?php echo $row->nama;?></td>
-                                <td><?php echo $row->no_hp;?></td>
-                                <td><?php echo $row->judul;?></td>
-                                </tr>
-                                <?php endforeach;?>
-                             </tbody>
-                        </Table>
-                      </div>
-                      <?php //echo $pagination;?>
+                      <!-- content -->
+                        
                   </div>
                 </div>
               </div>

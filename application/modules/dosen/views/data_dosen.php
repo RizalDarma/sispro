@@ -1,8 +1,7 @@
-
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3><?=$title?></h3>
+                <h3><?=$title;?></h3>
               </div>
 
               <div class="title_right">
@@ -23,7 +22,6 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Plain Page</h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -42,8 +40,37 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                      
-                  </div>
+                       <!-- content -->
+                       <?= $message ?>
+                     <?=form_open('dosen/data_dosen');?>
+                       
+                      <table border=0>
+                        <tr>
+                            <td>
+                            
+                            <label class="col-sm-3 control-label">Nomor Telp</label>
+                            <div class="col-sm-9">
+                            <?=form_input(array('type'=>'text','class'=>'form-control','name'=>'no_telp', 'required'=>''));?>
+                            </div>
+                            
+                            <label class="col-sm-3 control-label">Email</label>
+                            <div class="col-sm-9">
+                            <?=form_input(array('type'=>'email','class'=>'form-control','name'=>'email', 'required'=>''));?>
+                            </div>
+                  
+                            <label class="col-sm-3 control-label">Alamat Lengkap</label>
+                            <div class="col-sm-9">
+                            <?=form_textarea('alamat',set_value(''),'class="form-control"','required=""');?>
+                            </div>
+                            
+                            <label class="col-sm-3 control-label"></label>
+                            <div class="col-sm-9">
+                            <?=  form_input(array('type'=>'submit','class'=>'btn btn-success submit','value'=>'Simpan','name'=>'submit'));?>
+                            </div>
+                           </td>
+                        </tr>
+                    </table>
+                  </div>      
                 </div>
               </div>
             </div>

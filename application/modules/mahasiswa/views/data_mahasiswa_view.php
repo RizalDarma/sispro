@@ -74,17 +74,17 @@
                             
                             <label class="col-sm-3 control-label">Email</label>
                             <div class="col-sm-9">
-                            <?=form_input(array('type'=>'email','class'=>'form-control','placeholder'=>'E-mail','value'=>'','name'=>'email'));?>
+                            <?=form_input(array('type'=>'email','class'=>'form-control','placeholder'=>'E-mail','value'=>'','name'=>'email','required'=>''));?>
                             </div>
                             
                             <label class="col-sm-3 control-label">No. Hp</label>
                             <div class="col-sm-9">
-                            <?=form_input(array('type'=>'text','class'=>'form-control','placeholder'=>'Nomor Telp.','value'=>'','name'=>'nomor'));?>
+                            <?=form_input(array('type'=>'text','class'=>'form-control','placeholder'=>'Nomor Telp.','value'=>'','name'=>'nomor','required'=>''));?>
                             </div>
                             
                             <label class="col-sm-3 control-label">Kelas</label>
                             <div class="col-sm-9">
-                            <?=form_input(array('type'=>'text','class'=>'form-control','placeholder'=>'Kelas','value'=>'','name'=>'kelas'));?>
+                            <?=form_input(array('type'=>'text','class'=>'form-control','placeholder'=>'Kelas','value'=>'','name'=>'kelas','required'=>''));?>
                             </div>
                             
                             <label class="col-sm-3 control-label">Kategori Judul</label>

@@ -48,6 +48,18 @@
                         <Table class="table table-striped table-bordered">
                             <thead align="center">
                                 <tr>
+                                     <?=form_open('admin/Pendaftaran');?>
+                                    <td  colspan="10" align="left">
+                                        <label class="col-sm-3 control-label">Pilih Periode</label>
+                                        <div class="col-sm-3">
+                                        <?php $dd_attribute = 'class="form-control select2"'; ?>
+                                        <?=form_dropdown('periode', $dd1 , $periode , $dd_attribute); ?>
+                                        </div>
+                                        <?=  form_input(array('type'=>'submit','class'=>'btn btn-success submit','value'=>'Tampilkan','name'=>'submit'));?>
+                                        <?=  form_input(array('type'=>'submit','class'=>'btn btn-success submit','value'=>'Terbitkan','name'=>'submit2'));?>
+                                    </td>
+                                </tr>
+                                <tr>
                                 <td>No.</td>
                                 <td>NPM</td>
                                 <td>Nama</td>

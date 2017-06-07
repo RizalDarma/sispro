@@ -46,7 +46,7 @@
                       <div class="col-md-55">
                         <div class="thumbnail">
                           <div class="image view view-first">
-                            <img style="width: 100%; display: block;" src="<?= base_url(); ?>images/media.jpg" alt="image" />
+                            <img style="width: 100%; display: block;" src="<?= base_url(); ?>images/media.png" alt="image" />
                             <div class="mask">
                               <p>Welcome</p>
                               <div class="tools tools-bottom">
@@ -63,7 +63,7 @@
                       <div class="col-md-55">
                         <div class="thumbnail">
                           <div class="image view view-first">
-                            <img style="width: 100%; display: block;" src="<?= base_url(); ?>images/media.jpg" alt="image" />
+                            <img style="width: 100%; display: block;" src="<?= base_url(); ?>images/media.png" alt="image" />
                             <div class="mask">
                               <p>Data Dosen</p>
                               <div class="tools tools-bottom">
@@ -80,7 +80,7 @@
                       <div class="col-md-55">
                         <div class="thumbnail">
                           <div class="image view view-first">
-                            <img style="width: 100%; display: block;" src="<?= base_url(); ?>images/media.jpg" alt="image" />
+                            <img style="width: 100%; display: block;" src="<?= base_url(); ?>images/media.png" alt="image" />
                             <div class="mask">
                               <p>List Data Mahasiswa</p>
                               <div class="tools tools-bottom">
@@ -97,7 +97,7 @@
                       <div class="col-md-55">
                         <div class="thumbnail">
                           <div class="image view view-first">
-                            <img style="width: 100%; display: block;" src="<?= base_url(); ?>images/media.jpg" alt="image" />
+                            <img style="width: 100%; display: block;" src="<?= base_url(); ?>images/media.png" alt="image" />
                             <div class="mask">
                               <p>Account</p>
                               <?php $level = $this->session->userdata['level']; ?>
@@ -115,7 +115,7 @@
                       <div class="col-md-55">
                         <div class="thumbnail">
                           <div class="image view view-first">
-                            <img style="width: 100%; display: block;" src="<?= base_url(); ?>images/media.jpg" alt="image" />
+                            <img style="width: 100%; display: block;" src="<?= base_url(); ?>images/media.png" alt="image" />
                             <div class="mask">
                               <p>Log Out</p>
                               <div class="tools tools-bottom">

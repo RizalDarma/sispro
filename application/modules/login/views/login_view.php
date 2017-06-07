@@ -19,12 +19,13 @@
   </head>
 
   <body class="login">
-    <div>
+      <div>
       <div class="login_wrapper">
         <div class="animate form login_form">
           <section class="login_content">
+              <img src="<?= base_url(); ?>images/inspiring.png" width="250" hight="120"></img>
             <?=form_open('login/login');?>
-              <h1> Login </h1>
+              <h1> Sign In </h1>
               <div>
                 <?=form_input(array('type'=>'text','class'=>'form-control','placeholder'=>'Username','required'=>'','name'=>'username'));?>
               </div>

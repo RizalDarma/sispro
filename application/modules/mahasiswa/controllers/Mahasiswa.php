@@ -99,16 +99,29 @@ class Mahasiswa extends CI_Controller {
         $id_users=  $this->session->userdata['username'];
         $data_konten	= $this->app_model->pengumuman_dospem($id_users)->result_array();
         $this->load->model('app_model');
+       
         $data = array(
-            'message'=>'',
             'npm'=> $data_konten[0]['npm'],
             'nama'=> $data_konten[0]['nama'],
             'kelas'=>$data_konten[0]['kelas'],
             'no_hp'=>$data_konten[0]['no_hp'],
             'periode'=>$data_konten[0]['periode'],
             'nama_dosen'=>$data_konten[0]['nama_dosen'],
+            'status'=>$data_konten[0]['status'],
         );
+        if($data_konten[0]['status']=="N"){
+            $data['message']="<div class='alert alert-warning'>HASIL PENGUMUMAN BELUM KELUAR</div>";
+        }else{
+            $data['message']="";
+        }
         $data['title']="Pengumuman Pendaftaran";
         $this->template->load('template','pengumuman',$data);
+    }
+    
+    function view_data(){
+        $id = $this->session->userdata['id_users'];
+        
+        $this->app_model->view_biodata($id);
+        $this->app_model->view_biodata2($id);
     }
 }

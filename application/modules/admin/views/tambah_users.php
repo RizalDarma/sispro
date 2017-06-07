@@ -15,9 +15,6 @@
                 </div>
               </div>
             </div>
-
-            <div class="clearfix"></div>
-
             <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
@@ -41,25 +38,24 @@
                   </div>
                   <div class="x_content">
                        <!-- content -->
-                       <?=form_open('admin/tambah_users');?>
-                       
+                       <?=form_open('admin/add_users');?>
                       <table border=0>
                         <tr>
                             <td>
                             
                             <label class="col-sm-3 control-label">Nama</label>
                             <div class="col-sm-9">
-                            <?=form_input(array('type'=>'text','class'=>'form-control','placeholder'=>'Nama','value'=>'','name'=>'nama'));?>
+                            <?=form_input(array('type'=>'text','class'=>'form-control','placeholder'=>'Nama','value'=>'','name'=>'nama','required'=>''));?>
                             </div>
                             
                             <label class="col-sm-3 control-label">Username</label>
                             <div class="col-sm-9">
-                            <?=form_input(array('type'=>'text','class'=>'form-control','placeholder'=>'Username','value'=>'','name'=>'username'));?>
+                            <?=form_input(array('type'=>'text','class'=>'form-control','placeholder'=>'Username','value'=>'','name'=>'username','required'=>''));?>
                             </div>
                            
                             <label class="col-sm-3 control-label">Password</label>
                             <div class="col-sm-9">
-                            <?=form_input(array('type'=>'password','class'=>'form-control','placeholder'=>'Password','value'=>'','name'=>'password'));?>
+                            <?=form_input(array('type'=>'password','class'=>'form-control','placeholder'=>'Password','value'=>'','name'=>'password','required'=>''));?>
                             </div>
                                                       
                             <label class="col-sm-3 control-label">Pilih Periode</label>
@@ -76,9 +72,9 @@
                             
                             <label class="col-sm-3 control-label"></label>
                             <div class="col-sm-9">
-                            <?=  form_input(array('type'=>'submit','class'=>'btn btn-default submit','value'=>'Simpan','name'=>'submit1'));?>
+                            <?=  form_input(array('type'=>'submit','class'=>'btn btn-success submit','value'=>'Simpan','name'=>'submit1'));?>
+                            <?=  form_input(array('type'=>'submit','class'=>'btn btn-success submit','value'=>'Kembali','name'=>'submit2'));?>
                             </div>
-                            
                             </td>
                         </tr>
                     </table>
