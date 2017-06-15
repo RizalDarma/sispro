@@ -2,13 +2,13 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3></h3>
+                <h3><?=$title?></h3>
               </div>
 
               <div class="title_right">
                 <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
                   <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for...">
+                    <input type="text" class="form-control" name="periodedaftar" placeholder="Search for..."  id="periodedaftar">
                     <span class="input-group-btn">
                       <button class="btn btn-default" type="button">Go!</button>
                     </span>
@@ -23,7 +23,7 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                      <h2><?=$title?></h2>
+                    <h2></h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -42,33 +42,29 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                      <!-- content -->
-                      <?=form_open('mahasiswa/Hasil_pengumuman');?>
-                      <Table class="table table-striped table-bordered">
-                          <thead align="center">
-                          <tr>
-                                <td>NIDN</td>
-                                <td>NAMA</td>
-                                <td>ALAMAT</td>
-                                <td>NO Telp.</td>
-                                <td>EMAIL</td>
-                          </tr>
-                         </thead>
-                         <tbody align="center">
-                          <tr>
-                                <td><?= $npm ?></td>
-                                <td><?= $nama ?></td>
-                                <td><?= $alamat ?></td>
-                                <td><?= $no_tlp ?></td>
-                                <td><?= $email ?></td>
-                          </tr>
-                         </tbody>
-                         <tr>
-                             <td>
-                                 <?=  form_input(array('type'=>'submit','class'=>'btn btn-success submit','value'=>'Kembali','name'=>'submit'));?>
-                             </td>
-                         </tr>
-                      </table>
+                      <?=form_open('admin/setting');?>
+                      <div class="col-sm-3">
+                          <?=  form_input(array('type'=>'text','class'=>'form-control','placeholder'=>'Tambah Periode','name'=>'periodex'));?>
+                      </div>
+                      <?=  form_input(array('type'=>'submit','class'=>'btn btn-success submit','value'=>'+','name'=>'submit'));?>
+                      <div class="table-responsive">
+                        <Table class="table table-striped table-bordered">
+                            <thead align="center">
+                              <tr>
+                                  <td>Periode</td>
+                                  <td>action</td>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <?php $no=0; foreach($periode as $row ): $no++;?>
+                              <tr>
+                                  <td align="center"><?= $row->periode; ?></td>
+                                  <td align="center"><?=anchor('admin/deleted/'.$row->periode,'<i class="glyphicon glyphicon-trash"></i>');?></td>
+                              </tr>
+                              <?php endforeach;?>
+                          </tbody>
+                        </Table>
+                      </div>
                   </div>
                 </div>
               </div>

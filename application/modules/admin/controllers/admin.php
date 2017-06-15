@@ -66,6 +66,23 @@ class Admin extends CI_Controller {
             $data['pagination']=$this->pagination->create_links();
             $data['message']='';
             $this->template->load('template','pendaftaran',$data);
+        }elseif(isset ($_POST['submit2'])){
+            $this->load->model('app_model');
+            $this->app_model->Testing($kode);
+            $data = array(
+            'title'=> 'Data Pendaftaran',
+            'anggota'=> $this->app_model->daftar_($kode)->result(),
+            'dd1' => $this->app_model->pilih_periode(),
+            'periode' => $this->input->post('periode') ? $this->input->post('periode') : ''
+            );
+            $config['base_url']=site_url('admin/pendaftaran/');
+            $config['total_rows']=$this->app_model->jumlah();
+            $config['per_page']=$this->limit;
+            $config['uri_segment']=3;
+            $this->pagination->initialize($config);
+            $data['pagination']=$this->pagination->create_links();
+            $data['message']='';
+            $this->template->load('template','pendaftaran',$data);
         }else{
             $this->load->model('app_model');
             $data = array(
@@ -278,5 +295,31 @@ class Admin extends CI_Controller {
          $this->app_model->update_pembimbing($nama,$npm,$dosen);
          redirect ('Admin/Pendaftaran');
         }
+    }
+    
+    function setting(){
+        $px = $this->input->post('periodex');
+        if(isset ($_POST['submit'])){
+            $this->app_model->Tperiode($px);
+            $this->load->model('app_model');
+            $data = array(
+              'title'=>'',
+              'periode'=> $this->app_model->periode()->result()
+            );
+            $this->template->load('template','setting',$data);
+        }else{
+            //$data_konten = $this->app_model->periode()->result_array();
+            $this->load->model('app_model');
+            $data = array(
+              'title'=>'',
+              'periode'=> $this->app_model->periode()->result()
+            );
+            $this->template->load('template','setting',$data);
+        }
+    }
+    
+    function deleted($dx){
+        $this->app_model->deleted($dx);
+        redirect ('Admin/setting');
     }
 }

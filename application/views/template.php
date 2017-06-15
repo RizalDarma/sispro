@@ -88,6 +88,7 @@
                         <li><?=anchor('admin/Datadosen/','Daftar Data Dosen');?></li>
                         <li><?=anchor('admin/Dataset/','Data Training');?></li>
                         <li><?=anchor('admin/Users/','Users');?></li>
+                        <li><?=anchor('admin/setting/','Setting');?></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-info-circle"></i> About <span class="fa fa-chevron-down"></span></a>
@@ -124,7 +125,7 @@
                    <?php $level = $this->session->userdata['level']; ?>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
                       <li><?php echo anchor($level.'/profile','<i class="fa fa-user pull-right"></i> Account');?></li>
-                    <li><?php echo anchor('login/logout','<i class="fa fa-sign-out pull-right"></i> Log Out');?></li>
+                    <li><?php echo anchor('login/logout','<i class="fa fa-sign-out pull-right"></i> Sign Out');?></li>
                   </ul>
                 </li>
               </ul>

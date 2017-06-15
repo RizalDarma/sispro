@@ -23,7 +23,7 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Plain Page</h2>
+                    <h2></h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -45,6 +45,17 @@
                       <div class="table-responsive">
                         <Table class="table table-striped table-bordered">
                             <thead align="center">
+                                <tr>
+                                     <?=form_open('dosen/check_mahasiswa');?>
+                                    <td  colspan="10" align="left">
+                                        <label class="col-sm-3 control-label">Pilih Periode</label>
+                                        <div class="col-sm-3">
+                                        <?php $dd_attribute = 'class="form-control select2"'; ?>
+                                        <?=form_dropdown('periode', $dd1 , $periode , $dd_attribute); ?>
+                                        </div>
+                                        <?=  form_input(array('type'=>'submit','class'=>'btn btn-success submit','value'=>'Tampilkan','name'=>'submit'));?>
+                                    </td>
+                                </tr>
                                 <tr>
                                 <td>No.</td>
                                 <td>NPM</td>

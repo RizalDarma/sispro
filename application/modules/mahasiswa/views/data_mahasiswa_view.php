@@ -115,7 +115,7 @@
                             
                             <label class="col-sm-3 control-label"></label>
                             <div class="col-sm-9">
-                            <?=  form_input(array('type'=>'submit','class'=>'btn btn-default submit','value'=>'Simpan','name'=>'submit'));?>
+                            <?=  form_input(array('type'=>'submit','class'=>'btn btn-success submit','value'=>'Simpan','name'=>'submit'));?>
                             </div>
                             
                             </td>

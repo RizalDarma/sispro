@@ -121,7 +121,18 @@ class Mahasiswa extends CI_Controller {
     function view_data(){
         $id = $this->session->userdata['id_users'];
         
-        $this->app_model->view_biodata($id);
-        $this->app_model->view_biodata2($id);
+        $data_konten = $this->app_model->view_biodata($id)->result_array();
+        $data_konten2 = $this->app_model->view_biodata2($id)->result_array();
+        $this->load->model('app_model');
+        $data = array(
+            'npm' => $data_konten2[0]['npm'],
+            'nama' => $data_konten2[0]['nama'],
+            'no_tlp' => $data_konten[0]['Notlp_Dosen'],
+            'alamat' => $data_konten[0]['Alamat_Dosen'],
+            'email' => $data_konten[0]['Email_Dosen'],
+            'title' => 'Informasi Dosen Pembimbing'
+        );
+        
+        $this->template->load('template','biodata',$data);
     }
 }

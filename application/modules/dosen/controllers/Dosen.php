@@ -21,21 +21,27 @@ class Dosen extends CI_Controller {
         if(empty($order_column)) $order_column='nama_dosen';
         if(empty($order_type)) $order_type='asc';
         //$limit=10;
+        
+        $kode2 =  $this->input->post('periode');
+        
         $dosen = $this->session->userdata['nama'];
         $kode = $this->session->userdata['id_users'];
         $this->load->model('app_model');
+        if(isset ($_POST['submit'])){
+            $data = array(
+            'title'=>'List Mahasiswa ',
+            'anggota'=> $this->app_model->daftar_mahasiswa2($kode,$kode2)->result(),
+            'dd1' => $this->app_model->pilih_periode(),
+            'periode' => $this->input->post('periode') ? $this->input->post('periode') : ''
+            );
+        }else{
             $data = array(
             'title'=>'List Mahasiswa ',
             'anggota'=> $this->app_model->daftar_mahasiswa($kode)->result(),
             'dd1' => $this->app_model->pilih_periode(),
             'periode' => $this->input->post('periode') ? $this->input->post('periode') : ''
             );
-            //$config['base_url']=site_url('admin/pendaftaran/');
-            //$config['total_rows']=$this->app_model->jumlah();
-            //$config['per_page']=$this->limit;
-            //$config['uri_segment']=3;
-            //$this->pagination->initialize($config);
-            //$data['pagination']=$this->pagination->create_links();
+            }
             $data['message']='';
             $this->template->load('template','list_mahasiswa',$data);
     }
