@@ -54,6 +54,7 @@
                                         <?=form_dropdown('periode', $dd1 , $periode , $dd_attribute); ?>
                                         </div>
                                         <?=  form_input(array('type'=>'submit','class'=>'btn btn-success submit','value'=>'Tampilkan','name'=>'submit'));?>
+                                        <?=  form_input(array('type'=>'submit','class'=>'btn btn-success submit','value'=>'Print','name'=>'print'));?>
                                     </td>
                                 </tr>
                                 <tr>

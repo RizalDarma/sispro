@@ -59,14 +59,19 @@
                             <tbody>
                                 <tr>
                                 <td align="center"><?php echo $npm;?></td>
-                                <td align="center"><?php echo $nama;?></td>
+                                <td align="center"><?php echo $this->session->userdata['nama'];  ?></td>
                                 <td align="center"><?php echo $kelas;?></td>
                                 <td align="center"><?php if($status=="N"){$nama_dosen = "-"; } echo $nama_dosen;?></td>
                                 <td align="center"><?php echo $periode;?></td>
                                 <td align="center"><?=anchor('mahasiswa/view_data/','<i class="glyphicon glyphicon-eye-open"></i>');?></td>
                                 </tr>
+                                <tr><td colspan="6"><?php $judul="JUDUL : "; echo $judul; ?></td></tr>
+                                <tr><td colspan="5"><?php echo $judulp; ?></td><td align="center"><?=anchor('mahasiswa/edit_judul/','<i class="glyphicon glyphicon-edit"></i>');?></td></tr>
                              </tbody>
                         </Table>
+                            <table>
+                                
+                            </table>
                       </div>
                   </div>
                 </div>

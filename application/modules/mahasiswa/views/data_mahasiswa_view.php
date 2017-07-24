@@ -52,11 +52,6 @@
                         <tr>
                             <td>
                             
-                            <label class="col-sm-3 control-label">ID Users</label>
-                            <div class="col-sm-9">
-                            <?=form_input(array('type'=>'text','class'=>'form-control','value'=>$id,'readonly'=>'readonly','name'=>'id_users'));?>
-                            </div>
-                  
                             <label class="col-sm-3 control-label">Nama Users</label>
                             <div class="col-sm-9">
                             <?=form_input(array('type'=>'text','class'=>'form-control','value'=>$nama,'readonly'=>'readonly','name'=>'nama'));?>

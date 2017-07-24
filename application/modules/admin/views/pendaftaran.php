@@ -57,6 +57,7 @@
                                         </div>
                                         <?=  form_input(array('type'=>'submit','class'=>'btn btn-success submit','value'=>'Tampilkan','name'=>'submit'));?>
                                         <?=  form_input(array('type'=>'submit','class'=>'btn btn-success submit','value'=>'Terbitkan','name'=>'submit2'));?>
+                                        <?=  form_input(array('type'=>'submit','class'=>'btn btn-success submit','value'=>'Cetak Laporan','name'=>'submit3'));?>
                                     </td>
                                 </tr>
                                 <tr>

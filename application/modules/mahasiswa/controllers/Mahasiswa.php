@@ -105,6 +105,7 @@ class Mahasiswa extends CI_Controller {
             'nama'=> $data_konten[0]['nama'],
             'kelas'=>$data_konten[0]['kelas'],
             'no_hp'=>$data_konten[0]['no_hp'],
+            'judulp'=>$data_konten[0]['judul'],
             'periode'=>$data_konten[0]['periode'],
             'nama_dosen'=>$data_konten[0]['nama_dosen'],
             'status'=>$data_konten[0]['status'],
@@ -130,9 +131,33 @@ class Mahasiswa extends CI_Controller {
             'no_tlp' => $data_konten[0]['Notlp_Dosen'],
             'alamat' => $data_konten[0]['Alamat_Dosen'],
             'email' => $data_konten[0]['Email_Dosen'],
+            'status'=> $data_konten2[0]['status'],
             'title' => 'Informasi Dosen Pembimbing'
         );
-        
+        if($data_konten2[0]['status']=='N')
+            redirect ('Mahasiswa/Hasil_pengumuman');
+        else
         $this->template->load('template','biodata',$data);
+    }
+    
+    function edit_judul(){
+        $id = $this->session->userdata['id_users'];
+        $data_konten = $this->app_model->editjudul($id)->result_array();
+        $this->load->model('app_model');
+        $data = array(
+            'judulp'=>  $data_konten[0]['judul'],
+           );
+        if(isset($_POST['submit'])){
+            $judul = $this->input->post('judul');
+            //echo $judul;
+            //die;
+            $this->app_model->judulbaru($judul,$id);
+            redirect('Mahasiswa/Hasil_pengumuman');
+        }  elseif(isset($_POST['submit1'])) {
+           redirect ('Mahasiswa/Hasil_pengumuman'); 
+        }  else {
+           
+            $this->template->load('template','editjudul',$data);
+        }
     }
 }

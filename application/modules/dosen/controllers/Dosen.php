@@ -34,6 +34,12 @@ class Dosen extends CI_Controller {
             'dd1' => $this->app_model->pilih_periode(),
             'periode' => $this->input->post('periode') ? $this->input->post('periode') : ''
             );
+        }elseif(isset ($_POST['print'])){
+            $data = array(
+            'title'=>'List Mahasiswa ',
+            'anggota'=> $this->app_model->daftar_mahasiswa2($kode,$kode2)->result(),
+            );
+            $this->template->load('template_cetak','list_print',$data);
         }else{
             $data = array(
             'title'=>'List Mahasiswa ',

@@ -2,7 +2,7 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3><?=$title?></h3>
+                <h3></h3>
               </div>
 
               <div class="title_right">
@@ -23,7 +23,7 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2></h2>
+                      <h2><?php //$title?></h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -42,38 +42,20 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                          <!-- Tabel -->
-                      <div class="table-responsive">
-                        <Table class="table table-striped table-bordered">
-                            <thead align="center">
-                                <tr>
-                                <?=form_open('admin/Tdata');?>
-                                <td colspan="7" align="left"><?=  form_input(array('type'=>'submit','class'=>'btn btn-success submit','value'=>'Tambah Training','name'=>'submit'));?></td>
-                                </tr>
-                                <tr>
-                                <td>No.</td>
-                                <td>Kategori Judul</td>
-                                <td>Kategori Pemrograman</td>
-                                <td>Metode</td>
-                                <td>Jenis Pendaftaran</td>
-                                <td>ID Dosen</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php $no=0; foreach($anggota as $row ): $no++;?>
-                                <tr>
-                                <td><?php echo $no;?></td>
-                                <td><?php echo $row->k_judul;?></td>
-                                <td><?php echo $row->k_program;?></td>
-                                <td><?php echo $row->metode;?></td>
-                                <td><?php echo $row->pendaftar;?></td>
-                                <td><?php echo $row->dosen;?></td>
-                                </tr>
-                                <?php endforeach;?>
-                             </tbody>
-                        </Table>
-                      </div>
-                      <?php echo $pagination;?>
+                  <?php //echo $message;?>
+                      <!-- content -->
+                        <?=form_open('Mahasiswa/edit_judul');?>
+                            <label class="col-sm-3 control-label">Judul</label>
+                            <div class="col-sm-9">
+                            <?=form_textarea('judul',$judulp,'class="form-control"');?>
+                            </div>
+                            
+                            <label class="col-sm-3 control-label"></label>
+                            <div class="col-sm-9">
+                            <?=  form_input(array('type'=>'submit','class'=>'btn btn-success submit','value'=>'Simpan','name'=>'submit'));?>
+                            
+                            <?=  form_input(array('type'=>'submit','class'=>'btn btn-success submit','value'=>'Kembali','name'=>'submit1'));?>
+                            </div>
                   </div>
                 </div>
               </div>

@@ -83,6 +83,23 @@ class Admin extends CI_Controller {
             $data['pagination']=$this->pagination->create_links();
             $data['message']='';
             $this->template->load('template','pendaftaran',$data);
+        }elseif(isset ($_POST['submit3'])){
+            $this->load->model('app_model');
+            //$this->app_model->Testing($kode);
+            $data = array(
+            'title'=> 'Data Pendaftaran'.$kode,
+            'anggota'=> $this->app_model->daftar_cetak($kode)->result(),
+            'dd1' => $this->app_model->pilih_periode(),
+            'periode' => $this->input->post('periode') ? $this->input->post('periode') : ''
+            );
+            $config['base_url']=site_url('admin/pendaftaran/');
+            $config['total_rows']=$this->app_model->jumlah();
+            $config['per_page']=$this->limit;
+            $config['uri_segment']=3;
+            $this->pagination->initialize($config);
+            $data['pagination']=$this->pagination->create_links();
+            $data['message']='';
+            $this->template->load('template_cetak','pendaftaran_cetak',$data);
         }else{
             $this->load->model('app_model');
             $data = array(
@@ -321,5 +338,34 @@ class Admin extends CI_Controller {
     function deleted($dx){
         $this->app_model->deleted($dx);
         redirect ('Admin/setting');
+    }
+    
+    function Tdata(){
+            $this->load->model('app_model');
+            $data = array('title'=>'Data Mahasiswa',
+            'dd' => $this->app_model->kriteria1(),
+            'nama_kriteria1' => $this->input->post('nama_kriteria1') ? $this->input->post('nama_kriteria1') : '',
+            'dd1' => $this->app_model->kriteria2(),
+            'nama_kriteria2' => $this->input->post('nama_kriteria2') ? $this->input->post('nama_kriteria2') : '',
+            'dd2' => $this->app_model->kriteria3(),
+            'nama_kriteria3' => $this->input->post('nama_kriteria3') ? $this->input->post('nama_kriteria3') : '',
+            'dd3' => $this->app_model->kriteria4(),
+            'nama_kriteria4' => $this->input->post('nama_kriteria4') ? $this->input->post('nama_kriteria4') : '',
+            'dos' => $this->app_model->pilih_dosen(),
+            'pilih_dosen' => $this->input->post('pilih_dosen') ? $this->input->post('pilih_dosen') : '',);
+            $this->template->load('template','tdata_training',$data);
+    }
+    
+    function Tdata_simpan(){
+        $kri1 = $this->input->post('kategori1');
+        $kri2 = $this->input->post('kategori2');
+        $kri3 = $this->input->post('kategori3');
+        $kri4 = $this->input->post('kategori4');
+        $dosen = $this->input->post('dosen');
+        
+        //echo "$kri1,$kri2,$kri3,$kri4,$dosen";
+        
+        $this->app_model->tdatasave($kri1,$kri2,$kri3,$kri4,$dosen);
+        
     }
 }

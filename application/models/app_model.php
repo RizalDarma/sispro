@@ -63,8 +63,7 @@ class App_model extends CI_Model {
             return $this->db->query("SELECT * from pendaftaran where `nama_dosen`='$kode'");
         }else{
             return $this->db->query("SELECT * from pendaftaran where `nama_dosen`='$kode' AND `periode`='$kode2'");
-        }
-        
+        }   
     }
     
     public function daftar_($kode){
@@ -78,6 +77,17 @@ class App_model extends CI_Model {
             INNER JOIN app_users ON pendaftaran.`nama_dosen`=app_users.`id_users` where pendaftaran.`periode`='$kode'");
         }
     }
+    
+    public function daftar_cetak($kode){
+        if($kode=="ALL" || $kode==NULL){
+            return $this->db->query("SELECT *, pendaftaran.`nama`, app_users.`nama` as nama_dosen FROM pendaftaran
+            INNER JOIN app_users ON pendaftaran.`nama_dosen`=app_users.`id_users`");
+        }else{
+        return $this->db->query("SELECT *, pendaftaran.`nama`, app_users.`nama` as nama_dosen FROM pendaftaran
+            INNER JOIN app_users ON pendaftaran.`nama_dosen`=app_users.`id_users` where pendaftaran.`periode`='$kode'");
+        }
+    }
+    
     function jumlah(){
         return $this->db->count_all($this->table);
     }
@@ -863,7 +873,7 @@ class App_model extends CI_Model {
         }
         
         function pengumuman_dospem($i){
-        $hasil = $this->db->query("SELECT pendaftaran.`status`, pendaftaran.`npm`, pendaftaran.`nama`, pendaftaran.`kelas`,
+        $hasil = $this->db->query("SELECT pendaftaran.`judul`, pendaftaran.`status`, pendaftaran.`npm`, pendaftaran.`nama`, pendaftaran.`kelas`,
             pendaftaran.`no_hp`, pendaftaran.`periode`, app_users.`nama` as nama_dosen FROM pendaftaran
             INNER JOIN app_users ON pendaftaran.`nama_dosen`=app_users.`id_users`  where npm='$i'");
         return $hasil;
@@ -883,12 +893,12 @@ class App_model extends CI_Model {
         }
         
         function view_biodata($id){
-            $hasil = $this->db->query("SELECT biodata_dosen.`Notlp_Dosen`, biodata_dosen.`Alamat_Dosen` , biodata_dosen.`Email_Dosen` FROM pendaftaran
-            INNER JOIN biodata_dosen ON pendaftaran.`nama_dosen`= biodata_dosen.`id_Dosen`  where id_user='$id'");
+            $hasil = $this->db->query("SELECT biodata_dosen.`Notlp_Dosen`, biodata_dosen.`Alamat_Dosen` , biodata_dosen.`Email_Dosen` FROM biodata_dosen
+            INNER JOIN pendaftaran ON pendaftaran.`nama_dosen`= biodata_dosen.`id_Dosen`  where id_user='$id'");
             return $hasil;
         }
         function view_biodata2($id){
-            $hasil = $this->db->query("SELECT app_users.`username`  as  npm, app_users.`nama` FROM pendaftaran
+            $hasil = $this->db->query("SELECT app_users.`username`  as  npm, app_users.`nama`, pendaftaran.`status` FROM pendaftaran
             INNER JOIN app_users ON pendaftaran.`nama_dosen`= app_users.`id_users`  where id_user='$id'");
             return $hasil;
         }
@@ -911,5 +921,19 @@ class App_model extends CI_Model {
         function deleted($dx){
             $hasil = $this->db->query("DELETE from `periode_daftar` where npm='$dx'");
             return $hasil;
+        }
+        
+        function tdatasave($kri1,$kri2,$kri3,$kri4,$dosen){
+            return $this->db->query("INSERT INTO `tb_dataset`(`k_judul`, `k_program`, `metode`, `pendaftar`, `dosen`) VALUES ('$kri1','$kri2','$kri3','$kri4','$dosen')");
+        }
+        
+        function editjudul($id){
+            $hasil = $this->db->query("select `judul` from pendaftaran where `id_user`='$id'");
+            //$hasil  = strval($hasil);
+            return $hasil;
+        }
+        
+        function judulbaru($judul,$id){
+            $simpan = $this->db->query("UPDATE `pendaftaran` SET `judul`='$judul' WHERE `id_user`='$id';");
         }
 }
