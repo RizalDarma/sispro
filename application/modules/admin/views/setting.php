@@ -46,7 +46,8 @@
                       <div class="col-sm-3">
                           <?=  form_input(array('type'=>'text','class'=>'form-control','placeholder'=>'Tambah Periode','name'=>'periodex'));?>
                       </div>
-                      <?=  form_input(array('type'=>'submit','class'=>'btn btn-success submit','value'=>'+','name'=>'submit'));?>
+                      <button type="submit" class="btn btn-success submit" name="submit" title="Tambah"><span><i class="glyphicon glyphicon-floppy-disk"></i></span></button>
+                      <?php //echo form_input(array('type'=>'submit','class'=>'btn btn-success submit','value'=>'+','name'=>'submit'));?>
                       <div class="table-responsive">
                         <Table class="table table-striped table-bordered">
                             <thead align="center">

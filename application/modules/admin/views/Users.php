@@ -63,7 +63,7 @@
                             <tbody>
                                 <?php $no=0; foreach($anggota as $row ): $no++;?>
                                 <tr>
-                                <td align="center"><?php echo $row->id_users;?></td>
+                                <td align="center"><?php echo $no;//echo $row->id_users;?></td>
                                 <td><?php echo $row->nama;?></td>
                                 <td><?php echo $row->username;?></td>
                                 <td><?php echo $row->password;?></td>

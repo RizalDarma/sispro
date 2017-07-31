@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 01, 2017 at 10:06 AM
+-- Generation Time: Jul 31, 2017 at 04:48 AM
 -- Server version: 5.6.25
 -- PHP Version: 5.6.11
 
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `app_users` (
   `level` enum('admin','dosen','mahasiswa') NOT NULL,
   `Periode` varchar(5) NOT NULL,
   `last_login` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `app_users`
@@ -44,7 +44,7 @@ INSERT INTO `app_users` (`id_users`, `username`, `nama`, `password`, `level`, `P
 (1, 'admin', 'ProdiTI', '0ddc3cefb0884d9406e4db9d6ef70701', 'admin', '', '2017-05-11 14:21:55'),
 (2, 'admin', 'Teknik Informatika', 'e00cf25ad42683b3df678c61f42c6bda', 'admin', '', '2017-05-19 11:16:50'),
 (3, '0703018704', 'AHMAD BAGUS SETIAWAN, S.KOM., M.KOM., M.M', '55f8b2cd6bffc1928a5a861d9200c368', 'dosen', '', '2017-05-22 08:59:20'),
-(4, '0706118101', 'ARDI SANJAYA, M.KOM.', '0264391c340e4d3cbba430cee7836eaf', 'dosen', '', '2017-05-20 08:26:11'),
+(4, '0706118101', 'ARDI SANJAYA, M.KOM.', 'b9803c736cb5a234e87f64700b43a533', 'dosen', '', '2017-06-07 12:01:14'),
 (5, '0720117501', 'DANANG WAHYU WIDODO, M.KOM', '6a17faad3b1275fd2558d5435c58440e', 'dosen', '', '2017-05-20 08:27:04'),
 (6, '0708028704', 'DANAR PUTRA PAMUNGKAS,M.KOM', 'd5c4496f47e8f9714df12af4367019ac', 'dosen', '', '2017-05-20 08:27:44'),
 (7, '0723098303', 'DANIEL SWANJAYA, M.KOM', 'aa47f8215c6f30a0dcdb2a36a9f4168e', 'dosen', '', '2017-05-20 08:29:12'),
@@ -57,9 +57,11 @@ INSERT INTO `app_users` (`id_users`, `username`, `nama`, `password`, `level`, `P
 (14, '0708049001', 'RISKY ASWI RAMADHANI, M. KOM.', 'db5ee8e280c13e08523b28ca17db5ffb', 'dosen', '', '2017-05-20 08:36:27'),
 (15, '0707079001', 'JULIAN SAHERTIAN, S.PD., M.T', '338c23e8eafc19ec9236404deac0bef4', 'dosen', '', '2017-05-20 08:43:52'),
 (16, '0721058902', 'RISA HALILINTAR, M.KOM', '735c9c3675eaba16bfbec5913174067e', 'dosen', '', '2017-05-20 08:44:24'),
-(19, '13.1.03.02.0397', 'RIZAL DARMAWAN NUGROHO', '0a816e879e0705804867353d37a8ef73', 'mahasiswa', '20171', '2017-05-30 07:47:07'),
-(20, '14.1.03.02.0323', 'M. BAHRUL SUBKHI', 'dec349aae93850a49111f288634f9331', 'mahasiswa', '20171', '2017-05-30 07:49:21'),
-(21, '13.1.03.02.0035', 'ENGGAL SUCI FEBRIANI', 'ad4f6be172342a5044e5d186e3755a58', 'mahasiswa', '20171', '2017-06-01 07:21:48');
+(19, '13103020397', 'RIZAL DARMAWAN NUGROHO', '0a816e879e0705804867353d37a8ef73', 'mahasiswa', '20171', '2017-06-03 04:04:39'),
+(20, '14103020323', 'M. BAHRUL SUBKHI', 'dec349aae93850a49111f288634f9331', 'mahasiswa', '20171', '2017-06-03 04:04:53'),
+(21, '13103020035', 'ENGGAL SUCI FEBRIANI', 'ad4f6be172342a5044e5d186e3755a58', 'mahasiswa', '20171', '2017-06-03 04:05:10'),
+(22, '13103020084', 'NOFITA SARI', 'b1779ad6e343b95dfdcd6ade1c1ad8e1', 'mahasiswa', '20171', '2017-06-14 04:18:19'),
+(23, '13103020064', 'RIZKA AINUL ANGGRAINI', '55ea2b9220c70196b024cc8641948568', 'mahasiswa', '20171', '2017-07-26 13:30:03');
 
 -- --------------------------------------------------------
 
@@ -69,7 +71,6 @@ INSERT INTO `app_users` (`id_users`, `username`, `nama`, `password`, `level`, `P
 
 CREATE TABLE IF NOT EXISTS `biodata_dosen` (
   `Id_Dosen` varchar(20) NOT NULL,
-  `Nama_Dosen` text NOT NULL,
   `Notlp_Dosen` varchar(12) NOT NULL,
   `Alamat_Dosen` text NOT NULL,
   `Email_Dosen` text NOT NULL
@@ -79,8 +80,10 @@ CREATE TABLE IF NOT EXISTS `biodata_dosen` (
 -- Dumping data for table `biodata_dosen`
 --
 
-INSERT INTO `biodata_dosen` (`Id_Dosen`, `Nama_Dosen`, `Notlp_Dosen`, `Alamat_Dosen`, `Email_Dosen`) VALUES
-('0703018704', 'AHMAD BAGUS SETIAWAN,S.KOM., M.KOM., MM', '085XXXX', 'KEDIRI', 'SUGABESTE@GMAIL.COM');
+INSERT INTO `biodata_dosen` (`Id_Dosen`, `Notlp_Dosen`, `Alamat_Dosen`, `Email_Dosen`) VALUES
+('12', '-', 'Jl. Besowo 131, Kepung, Kediri', 'ratih.niswatin@gmail.com'),
+('3', '08563533234', 'Jl. Kh Hasyim Asyari Gg.I Nusa Indah No.74 Kediri', 'bagus.este@gmail.com'),
+('4', '08163650530', '-', 'ardisanjaya@unpkediri.ac.id');
 
 -- --------------------------------------------------------
 
@@ -282,9 +285,10 @@ CREATE TABLE IF NOT EXISTS `pendaftaran` (
 --
 
 INSERT INTO `pendaftaran` (`id_user`, `npm`, `nama`, `kelas`, `email`, `no_hp`, `k_judul`, `k_program`, `metode`, `pendaftar`, `judul`, `periode`, `nama_dosen`, `status`) VALUES
-(21, '13.1.03.02.0035', 'ENGGAL SUCI FEBRIANI', '4A', 'enggalsuci@gmail.com', '085645351144', 'DATA MINING', 'WEB PROGRAMING', 'NAIVE BAYES', 'Baru', 'klasifikasi konten berita surat kabar berdasarkan judul dengan text mining menggunakan metode naive bayes', '20171', 11, 'N'),
-(19, '13.1.03.02.0397', 'RIZAL DARMAWAN NUGROHO', '4A', 'rizaldarmawan727@gmail.com', '085736732018', 'SISTEM PENDUKUNG PENGAMBILAN KEPUTUSAN', 'WEB PROGRAMING', 'NAIVE BAYES', 'Baru', 'xxxxx', '20171', 3, 'N'),
-(20, '14.1.03.02.0323', 'M. BAHRUL SUBKHI', '4E', 'bahrul785@gmail.com', '08723xxxx', 'PENGOLAHAN CITRA', 'DESKTOP PROGRAMING', 'EIGENFACE PCA', 'Baru', 'cvcv', '20171', 13, 'N');
+(21, '13103020035', 'ENGGAL SUCI FEBRIANI', '4A', 'enggalsuci@gmail.com', '085645351144', 'DATA MINING', 'WEB PROGRAMING', 'NAIVE BAYES', 'Baru', 'klasifikasi konten berita surat kabar berdasarkan judul dengan text mining menggunakan metode naive bayes', '20171', 3, 'Y'),
+(22, '13103020084', 'NOFITA SARI', '4A', 'nofitasari176@gmail.com', '085753122977', 'PENGOLAHAN CITRA', 'DESKTOP PROGRAMING', 'K-NEAREST NEIGBORN', 'Baru', 'penggunaan algoritma K-Nearest Neighbor untuk pengenalan citra bunga anggrek', '20171', 15, 'Y'),
+(19, '13103020397', 'RIZAL DARMAWAN NUGROHO', '4H', 'rizaldarmawan727@gmail.com', '085736732018', 'SISTEM PENDUKUNG PENGAMBILAN KEPUTUSAN', 'WEB PROGRAMING', 'NAIVE BAYES', 'Baru', 'Sistem Pendukung Keputusan Penentuan Dosen Pembimbing Seminar Proposal Menggunakan Metode Naive Bayes', '20171', 3, 'Y'),
+(20, '14103020323', 'M. BAHRUL SUBKHI', '4E', 'bahrul785@gmail.com', '08723xxxx', 'PENGOLAHAN CITRA', 'DESKTOP PROGRAMING', 'EIGENFACE PCA', 'Baru', 'cvcv', '20171', 6, 'Y');
 
 -- --------------------------------------------------------
 
@@ -293,14 +297,14 @@ INSERT INTO `pendaftaran` (`id_user`, `npm`, `nama`, `kelas`, `email`, `no_hp`, 
 --
 
 CREATE TABLE IF NOT EXISTS `periode_daftar` (
-  `Tahun_Periode` varchar(5) NOT NULL
+  `npm` varchar(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `periode_daftar`
 --
 
-INSERT INTO `periode_daftar` (`Tahun_Periode`) VALUES
+INSERT INTO `periode_daftar` (`npm`) VALUES
 ('ALL'),
 ('20171');
 
@@ -317,7 +321,7 @@ CREATE TABLE IF NOT EXISTS `tb_dataset` (
   `metode` varchar(100) NOT NULL,
   `pendaftar` enum('Lama','Baru') NOT NULL,
   `dosen` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=556 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tb_dataset`
@@ -903,6 +907,12 @@ ALTER TABLE `pendaftaran`
   ADD PRIMARY KEY (`npm`);
 
 --
+-- Indexes for table `tb_dataset`
+--
+ALTER TABLE `tb_dataset`
+  ADD PRIMARY KEY (`ID_data`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -910,7 +920,12 @@ ALTER TABLE `pendaftaran`
 -- AUTO_INCREMENT for table `app_users`
 --
 ALTER TABLE `app_users`
-  MODIFY `id_users` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=22;
+  MODIFY `id_users` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=24;
+--
+-- AUTO_INCREMENT for table `tb_dataset`
+--
+ALTER TABLE `tb_dataset`
+  MODIFY `ID_data` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=556;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

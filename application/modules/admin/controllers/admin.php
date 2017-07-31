@@ -100,6 +100,8 @@ class Admin extends CI_Controller {
             $data['pagination']=$this->pagination->create_links();
             $data['message']='';
             $this->template->load('template_cetak','pendaftaran_cetak',$data);
+        }elseif(isset ($_POST['submit4'])){
+            redirect ('Admin/rekap');
         }else{
             $this->load->model('app_model');
             $data = array(
@@ -367,5 +369,38 @@ class Admin extends CI_Controller {
         
         $this->app_model->tdatasave($kri1,$kri2,$kri3,$kri4,$dosen);
         
+    }
+    
+    function rekap(){
+        $id = 3;
+        $data['hasil3'] = $this->app_model->rekap($id)->result();
+        $id = 4;
+        $data['hasil4'] = $this->app_model->rekap($id)->result();
+        $id = 5;
+        $data['hasil5'] = $this->app_model->rekap($id)->result();
+        $id = 6;
+        $data['hasil6'] = $this->app_model->rekap($id)->result();
+        $id = 7;
+        $data['hasil7'] = $this->app_model->rekap($id)->result();
+        $id = 8;
+        $data['hasil8'] = $this->app_model->rekap($id)->result();
+        $id = 9;
+        $data['hasil9'] = $this->app_model->rekap($id)->result();
+        $id = 10;
+        $data['hasil10'] = $this->app_model->rekap($id)->result();
+        $id = 11;
+        $data['hasil11'] = $this->app_model->rekap($id)->result();
+        $id = 12;
+        $data['hasil12'] = $this->app_model->rekap($id)->result();
+        $id = 13;
+        $data['hasil13'] = $this->app_model->rekap($id)->result();
+        $id = 14;
+        $data['hasil14'] = $this->app_model->rekap($id)->result();
+        $id = 15;
+        $data['hasil15'] = $this->app_model->rekap($id)->result();
+        $id = 16;
+        $data['hasil16'] = $this->app_model->rekap($id)->result();
+        $data['title'] = "Rekap Pendaftaran";
+        $this->template->load('template','rekap_data',$data); 
     }
 }

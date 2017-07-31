@@ -53,8 +53,10 @@
                                         <?php $dd_attribute = 'class="form-control select2"'; ?>
                                         <?=form_dropdown('periode', $dd1 , $periode , $dd_attribute); ?>
                                         </div>
-                                        <?=  form_input(array('type'=>'submit','class'=>'btn btn-success submit','value'=>'Tampilkan','name'=>'submit'));?>
-                                        <?=  form_input(array('type'=>'submit','class'=>'btn btn-success submit','value'=>'Print','name'=>'print'));?>
+                                        <button type="submit" class="btn btn-success submit" name="submit" title="Cari"><span><i class="glyphicon glyphicon-search"></i></span></button>
+                                        <?php //echo  form_input(array('type'=>'submit','class'=>'btn btn-success submit','value'=>'Tampilkan','name'=>'submit'));?>
+                                        <button type="submit" class="btn btn-success submit" name="print" title="Unduh Excel"><span><i class="glyphicon glyphicon-save-file"></i></span></button>
+                                        <?php //echo form_input(array('type'=>'submit','class'=>'btn btn-success submit','value'=>'Print','name'=>'print'));?>
                                     </td>
                                 </tr>
                                 <tr>

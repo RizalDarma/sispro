@@ -53,7 +53,7 @@
                                 <td>Kelas</td>
                                 <td>Dosen Pembimbing</td>
                                 <td>Periode</td>
-                                <td align="center">Action</td>
+                                <td align="center" colspan="2">Action</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -63,10 +63,11 @@
                                 <td align="center"><?php echo $kelas;?></td>
                                 <td align="center"><?php if($status=="N"){$nama_dosen = "-"; } echo $nama_dosen;?></td>
                                 <td align="center"><?php echo $periode;?></td>
-                                <td align="center"><?=anchor('mahasiswa/view_data/','<i class="glyphicon glyphicon-eye-open"></i>');?></td>
+                                <td align="center"><?php if($status=="Y") echo anchor('mahasiswa/view_data/','<i class="glyphicon glyphicon-eye-open"></i>'); else echo anchor('mahasiswa/Hasil_pengumuman/','<i class="glyphicon glyphicon-eye-close"></i>');?></td>
+                                <td align="center"><?php if($status=="Y") echo anchor('mahasiswa/print_data/','<i class="glyphicon glyphicon-print"></i>','target="_blank"'); else echo anchor('Mahasiswa/Hasil_pengumuman/','<i class="glyphicon glyphicon-minus"></i>');?></td>
                                 </tr>
-                                <tr><td colspan="6"><?php $judul="JUDUL : "; echo $judul; ?></td></tr>
-                                <tr><td colspan="5"><?php echo $judulp; ?></td><td align="center"><?=anchor('mahasiswa/edit_judul/','<i class="glyphicon glyphicon-edit"></i>');?></td></tr>
+                                <tr><td colspan="7"><?php $judul="JUDUL : "; echo $judul; ?></td></tr>
+                                <tr><td colspan="5"><?php echo $judulp; ?></td><td align="center" colspan="2"><?=anchor('mahasiswa/edit_judul/','<i class="glyphicon glyphicon-edit"></i>');?></td></tr>
                              </tbody>
                         </Table>
                             <table>

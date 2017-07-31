@@ -17,6 +17,11 @@ class Mahasiswa extends CI_Controller {
     }
     
     public function data_mahasiswa(){
+        $idku = $this->session->userdata['id_users'];
+        $hasil = $this->app_model->cekdataku($idku);
+        if($hasil->num_rows()>0){
+            redirect ('Mahasiswa/pengumuman_1');
+        }else{
         if(isset($_POST['submit']))
         {
             $id_users=  $this->session->userdata['id_users'];
@@ -63,7 +68,7 @@ class Mahasiswa extends CI_Controller {
             'nama_kriteria4' => $this->input->post('nama_kriteria4') ? $this->input->post('nama_kriteria4') : '',);
             $this->template->load('template','data_mahasiswa_view',$data);
         }
-        
+        }
     }
     
     function profile()
@@ -90,7 +95,7 @@ class Mahasiswa extends CI_Controller {
     
     public function pengumuman_1(){
         $data['title'] = "Pengumuman";
-        $data['message']="";
+        $data['message']="<div class='alert alert-success'>Proses Pendaftaran Berhasil</div>";
         $this->template->load('template','pengumuman_1',$data);
     }
     
@@ -111,7 +116,7 @@ class Mahasiswa extends CI_Controller {
             'status'=>$data_konten[0]['status'],
         );
         if($data_konten[0]['status']=="N"){
-            $data['message']="<div class='alert alert-warning'>HASIL PENGUMUMAN BELUM KELUAR</div>";
+            $data['message']="<div class='alert alert-danger'>HASIL PENGUMUMAN BELUM KELUAR</div>";
         }else{
             $data['message']="";
         }
@@ -159,5 +164,18 @@ class Mahasiswa extends CI_Controller {
            
             $this->template->load('template','editjudul',$data);
         }
+    }
+    
+    function print_data(){
+        $id = $this->session->userdata['id_users'];
+        $data_konten = $this->app_model->cekdataku2($id)->result_array();
+        $data = array(
+            'judulp'=>  $data_konten[0]['judul'],
+            'nama'=>  $data_konten[0]['nama'],
+            'nim'=>  $data_konten[0]['npm'],
+            'dospem'=>  $data_konten[0]['dosen'],
+            'nidn'=>  $data_konten[0]['username'],
+           );
+        $this->load->view('mahasiswa/berita_acara',$data);
     }
 }

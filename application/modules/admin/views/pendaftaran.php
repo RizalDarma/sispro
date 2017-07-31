@@ -55,9 +55,14 @@
                                         <?php $dd_attribute = 'class="form-control select2"'; ?>
                                         <?=form_dropdown('periode', $dd1 , $periode , $dd_attribute); ?>
                                         </div>
-                                        <?=  form_input(array('type'=>'submit','class'=>'btn btn-success submit','value'=>'Tampilkan','name'=>'submit'));?>
-                                        <?=  form_input(array('type'=>'submit','class'=>'btn btn-success submit','value'=>'Terbitkan','name'=>'submit2'));?>
-                                        <?=  form_input(array('type'=>'submit','class'=>'btn btn-success submit','value'=>'Cetak Laporan','name'=>'submit3'));?>
+                                        <button type="submit" class="btn btn-info submit" name="submit" title="Cari"><span><i class="glyphicon glyphicon-search"></i></span></button>
+                                        <?php // echo form_input(array('type'=>'submit','class'=>'btn btn-info submit','value'=>'cari','name'=>'submit'));?>
+                                        <button type="submit" class="btn btn-info submit" name="submit2" title="Terbitkan Pembimbing"><span><i class="glyphicon glyphicon-cloud-upload"></i></span></button>
+                                        <?php // echo form_input(array('type'=>'submit','class'=>'btn btn-success submit','value'=>'Terbitkan','name'=>'submit2'));?>
+                                        <button type="submit" class="btn btn-info submit" name="submit3" title="Unduh Excel"><span><i class="glyphicon glyphicon-save-file"></i></span></button>
+                                        <?php // echo form_input(array('type'=>'submit','class'=>'btn btn-default submit','value'=>'Unduh','name'=>'submit3',));?>
+                                        <button type="submit" class="btn btn-info submit" name="submit4" title="Rekap Pembimbing"><span><i class=" glyphicon glyphicon-check"></i></span></button>
+                                        <?php // echo form_input(array('type'=>'submit','class'=>'btn btn-default submit','value'=>'Rekap','name'=>'submit4',));?>
                                     </td>
                                 </tr>
                                 <tr>
@@ -81,9 +86,9 @@
                                 <td><?php echo $row->no_hp;?></td>
                                 <td><?php echo $row->nama_dosen;?></td>
                                 <td><?php echo $row->periode;?></td>
-                                <td><?=anchor('admin/edit_data/'.$row->npm,'<i class="glyphicon glyphicon-edit"></i>');?></td>
-                                <td><?=anchor('admin/hapus_data/'.$row->npm,'<i class="glyphicon glyphicon-trash"></i>');?></td>
-                                <td><?=anchor('admin/view_detail/'.$row->npm,'<i class="glyphicon glyphicon-eye-open"></i>');?></td>
+                                <td><?=anchor('admin/edit_data/'.$row->npm,'<i class="glyphicon glyphicon-edit" title="Edit Data"></i>');?></td>
+                                <td><?=anchor('admin/hapus_data/'.$row->npm,'<i class="glyphicon glyphicon-trash" title="Hapus Data"></i>');?></td>
+                                <td><?=anchor('admin/view_detail/'.$row->npm,'<i class="glyphicon glyphicon-eye-open" title="Detail Data"></i>');?></td>
                                 </tr>
                                 <?php endforeach;?>
                              </tbody>

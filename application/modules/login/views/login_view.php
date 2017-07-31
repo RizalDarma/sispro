@@ -33,14 +33,15 @@
                 <?=form_input(array('type'=>'password','class'=>'form-control','placeholder'=>'Password','required'=>'','name'=>'password'));?>
               </div>
               <div>
-                <?=  form_input(array('type'=>'submit','class'=>'btn btn-default submit','value'=>'Login','name'=>'submit'));?>
+                <button type="submit" class="btn btn-default submit" name="submit" title="Login"><span><i class="glyphicon glyphicon-lock "> Login</i></span></button>
+                <?php //echo  form_input(array('type'=>'submit','class'=>'btn btn-default submit','value'=>'Login','name'=>'submit'));?>
               </div>
 
               <div class="clearfix"></div>
 
               <div class="separator">
                 <div>
-                  <h1><i class="fa fa-university"></i> Teknik Informatika</h1>
+                    <a href="http://informatika.ft.unpkediri.ac.id/" title="http://informatika.ft.unpkediri.ac.id/" target="_blank"><h1><i class="fa fa-university"></i> Teknik Informatika</h1></a>
                   <p>©2017 All Rights Reserved Teknik Informatika</p>
                 </div>
               </div>

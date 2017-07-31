@@ -55,14 +55,14 @@ class App_model extends CI_Model {
     }
     
     function daftar_mahasiswa($kode){
-        return $this->db->query("SELECT * from pendaftaran where `nama_dosen`='$kode'");
+        return $this->db->query("SELECT * from pendaftaran where `nama_dosen`='$kode' and status='Y'");
     }
     
     function daftar_mahasiswa2($kode,$kode2){
         if($kode2==NULL || $kode2=="ALL"){
-            return $this->db->query("SELECT * from pendaftaran where `nama_dosen`='$kode'");
+            return $this->db->query("SELECT * from pendaftaran where `nama_dosen`='$kode' and status='Y'");
         }else{
-            return $this->db->query("SELECT * from pendaftaran where `nama_dosen`='$kode' AND `periode`='$kode2'");
+            return $this->db->query("SELECT * from pendaftaran where `nama_dosen`='$kode' AND `periode`='$kode2' and status='Y'");
         }   
     }
     
@@ -935,5 +935,20 @@ class App_model extends CI_Model {
         
         function judulbaru($judul,$id){
             $simpan = $this->db->query("UPDATE `pendaftaran` SET `judul`='$judul' WHERE `id_user`='$id';");
+        }
+        
+        function cekdataku($idku){
+            $hasil = $this->db->query("select * from `pendaftaran` where `id_user`='$idku'");
+            return $hasil;
+        }
+        
+        function cekdataku2($idku){
+            $hasil = $this->db->query("select pendaftaran.judul, app_users.username,pendaftaran.npm,pendaftaran.nama, app_users.nama as dosen from `pendaftaran` inner join `app_users` on `pendaftaran`.nama_dosen=`app_users`.id_users where `id_user`='$idku'");
+            return $hasil;
+        }
+        
+        function rekap($id){
+            $hasil = $this->db->query("SELECT app_users.nama, app_users.username, count(*) as jumlah FROM `pendaftaran` INNER JOIN app_users ON pendaftaran.nama_dosen=app_users.id_users WHERE pendaftaran.nama_dosen='$id' ");
+            return $hasil;
         }
 }
